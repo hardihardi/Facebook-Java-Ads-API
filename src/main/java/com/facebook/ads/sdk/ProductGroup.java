@@ -346,6 +346,11 @@ public class ProductGroup extends APINode {
       "custom_label_2",
       "custom_label_3",
       "custom_label_4",
+      "custom_number_0",
+      "custom_number_1",
+      "custom_number_2",
+      "custom_number_3",
+      "custom_number_4",
       "description",
       "expiration_date",
       "fb_product_category",
@@ -356,14 +361,18 @@ public class ProductGroup extends APINode {
       "image_fetch_status",
       "image_url",
       "images",
+      "importer_address",
+      "importer_name",
       "invalidation_errors",
       "inventory",
+      "manufacturer_info",
       "manufacturer_part_number",
       "marked_for_product_launch",
       "material",
       "mobile_link",
       "name",
       "ordering_index",
+      "origin_country",
       "parent_product_id",
       "pattern",
       "price",
@@ -386,6 +395,7 @@ public class ProductGroup extends APINode {
       "start_date",
       "url",
       "visibility",
+      "wa_compliance_category",
     };
 
     @Override
@@ -624,6 +634,41 @@ public class ProductGroup extends APINode {
       this.requestField("custom_label_4", value);
       return this;
     }
+    public APIRequestGetProducts requestCustomNumber0Field () {
+      return this.requestCustomNumber0Field(true);
+    }
+    public APIRequestGetProducts requestCustomNumber0Field (boolean value) {
+      this.requestField("custom_number_0", value);
+      return this;
+    }
+    public APIRequestGetProducts requestCustomNumber1Field () {
+      return this.requestCustomNumber1Field(true);
+    }
+    public APIRequestGetProducts requestCustomNumber1Field (boolean value) {
+      this.requestField("custom_number_1", value);
+      return this;
+    }
+    public APIRequestGetProducts requestCustomNumber2Field () {
+      return this.requestCustomNumber2Field(true);
+    }
+    public APIRequestGetProducts requestCustomNumber2Field (boolean value) {
+      this.requestField("custom_number_2", value);
+      return this;
+    }
+    public APIRequestGetProducts requestCustomNumber3Field () {
+      return this.requestCustomNumber3Field(true);
+    }
+    public APIRequestGetProducts requestCustomNumber3Field (boolean value) {
+      this.requestField("custom_number_3", value);
+      return this;
+    }
+    public APIRequestGetProducts requestCustomNumber4Field () {
+      return this.requestCustomNumber4Field(true);
+    }
+    public APIRequestGetProducts requestCustomNumber4Field (boolean value) {
+      this.requestField("custom_number_4", value);
+      return this;
+    }
     public APIRequestGetProducts requestDescriptionField () {
       return this.requestDescriptionField(true);
     }
@@ -694,6 +739,20 @@ public class ProductGroup extends APINode {
       this.requestField("images", value);
       return this;
     }
+    public APIRequestGetProducts requestImporterAddressField () {
+      return this.requestImporterAddressField(true);
+    }
+    public APIRequestGetProducts requestImporterAddressField (boolean value) {
+      this.requestField("importer_address", value);
+      return this;
+    }
+    public APIRequestGetProducts requestImporterNameField () {
+      return this.requestImporterNameField(true);
+    }
+    public APIRequestGetProducts requestImporterNameField (boolean value) {
+      this.requestField("importer_name", value);
+      return this;
+    }
     public APIRequestGetProducts requestInvalidationErrorsField () {
       return this.requestInvalidationErrorsField(true);
     }
@@ -706,6 +765,13 @@ public class ProductGroup extends APINode {
     }
     public APIRequestGetProducts requestInventoryField (boolean value) {
       this.requestField("inventory", value);
+      return this;
+    }
+    public APIRequestGetProducts requestManufacturerInfoField () {
+      return this.requestManufacturerInfoField(true);
+    }
+    public APIRequestGetProducts requestManufacturerInfoField (boolean value) {
+      this.requestField("manufacturer_info", value);
       return this;
     }
     public APIRequestGetProducts requestManufacturerPartNumberField () {
@@ -748,6 +814,13 @@ public class ProductGroup extends APINode {
     }
     public APIRequestGetProducts requestOrderingIndexField (boolean value) {
       this.requestField("ordering_index", value);
+      return this;
+    }
+    public APIRequestGetProducts requestOriginCountryField () {
+      return this.requestOriginCountryField(true);
+    }
+    public APIRequestGetProducts requestOriginCountryField (boolean value) {
+      this.requestField("origin_country", value);
       return this;
     }
     public APIRequestGetProducts requestParentProductIdField () {
@@ -904,6 +977,13 @@ public class ProductGroup extends APINode {
       this.requestField("visibility", value);
       return this;
     }
+    public APIRequestGetProducts requestWaComplianceCategoryField () {
+      return this.requestWaComplianceCategoryField(true);
+    }
+    public APIRequestGetProducts requestWaComplianceCategoryField (boolean value) {
+      this.requestField("wa_compliance_category", value);
+      return this;
+    }
   }
 
   public static class APIRequestCreateProduct extends APIRequest<APINode> {
@@ -934,6 +1014,11 @@ public class ProductGroup extends APINode {
       "custom_label_2",
       "custom_label_3",
       "custom_label_4",
+      "custom_number_0",
+      "custom_number_1",
+      "custom_number_2",
+      "custom_number_3",
+      "custom_number_4",
       "description",
       "expiration_date",
       "fb_product_category",
@@ -1156,6 +1241,51 @@ public class ProductGroup extends APINode {
 
     public APIRequestCreateProduct setCustomLabel4 (String customLabel4) {
       this.setParam("custom_label_4", customLabel4);
+      return this;
+    }
+
+    public APIRequestCreateProduct setCustomNumber0 (Long customNumber0) {
+      this.setParam("custom_number_0", customNumber0);
+      return this;
+    }
+    public APIRequestCreateProduct setCustomNumber0 (String customNumber0) {
+      this.setParam("custom_number_0", customNumber0);
+      return this;
+    }
+
+    public APIRequestCreateProduct setCustomNumber1 (Long customNumber1) {
+      this.setParam("custom_number_1", customNumber1);
+      return this;
+    }
+    public APIRequestCreateProduct setCustomNumber1 (String customNumber1) {
+      this.setParam("custom_number_1", customNumber1);
+      return this;
+    }
+
+    public APIRequestCreateProduct setCustomNumber2 (Long customNumber2) {
+      this.setParam("custom_number_2", customNumber2);
+      return this;
+    }
+    public APIRequestCreateProduct setCustomNumber2 (String customNumber2) {
+      this.setParam("custom_number_2", customNumber2);
+      return this;
+    }
+
+    public APIRequestCreateProduct setCustomNumber3 (Long customNumber3) {
+      this.setParam("custom_number_3", customNumber3);
+      return this;
+    }
+    public APIRequestCreateProduct setCustomNumber3 (String customNumber3) {
+      this.setParam("custom_number_3", customNumber3);
+      return this;
+    }
+
+    public APIRequestCreateProduct setCustomNumber4 (Long customNumber4) {
+      this.setParam("custom_number_4", customNumber4);
+      return this;
+    }
+    public APIRequestCreateProduct setCustomNumber4 (String customNumber4) {
+      this.setParam("custom_number_4", customNumber4);
       return this;
     }
 
@@ -2054,8 +2184,12 @@ public class ProductGroup extends APINode {
       VALUE_FB_ELEC_PRINT("FB_ELEC_PRINT"),
       @SerializedName("FB_ELEC_RADAR")
       VALUE_FB_ELEC_RADAR("FB_ELEC_RADAR"),
+      @SerializedName("FB_ELEC_SFTWR")
+      VALUE_FB_ELEC_SFTWR("FB_ELEC_SFTWR"),
       @SerializedName("FB_ELEC_SPEED_RDR")
       VALUE_FB_ELEC_SPEED_RDR("FB_ELEC_SPEED_RDR"),
+      @SerializedName("FB_ELEC_TELEVISION")
+      VALUE_FB_ELEC_TELEVISION("FB_ELEC_TELEVISION"),
       @SerializedName("FB_ELEC_TOLL")
       VALUE_FB_ELEC_TOLL("FB_ELEC_TOLL"),
       @SerializedName("FB_ELEC_VIDEO")

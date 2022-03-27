@@ -61,6 +61,8 @@ public class Business extends APINode {
   private ManagedPartnerBusiness mCollaborativeAdsManagedPartnerBusinessInfo = null;
   @SerializedName("collaborative_ads_managed_partner_eligibility")
   private BusinessManagedPartnerEligibility mCollaborativeAdsManagedPartnerEligibility = null;
+  @SerializedName("cpas_business_setup_config")
+  private CPASBusinessSetupConfig mCpasBusinessSetupConfig = null;
   @SerializedName("created_by")
   private Object mCreatedBy = null;
   @SerializedName("created_time")
@@ -324,6 +326,10 @@ public class Business extends APINode {
     return new APIRequestCreateAdAccount(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestCreateAdNetworkApplication createAdNetworkApplication() {
+    return new APIRequestCreateAdNetworkApplication(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestGetAdNetworkAnalytics getAdNetworkAnalytics() {
     return new APIRequestGetAdNetworkAnalytics(this.getPrefixedId().toString(), context);
   }
@@ -368,24 +374,12 @@ public class Business extends APINode {
     return new APIRequestGetBusinessInvoices(this.getPrefixedId().toString(), context);
   }
 
-  public APIRequestGetBusinessUnits getBusinessUnits() {
-    return new APIRequestGetBusinessUnits(this.getPrefixedId().toString(), context);
-  }
-
-  public APIRequestCreateBusinessUnit createBusinessUnit() {
-    return new APIRequestCreateBusinessUnit(this.getPrefixedId().toString(), context);
-  }
-
   public APIRequestGetBusinessUsers getBusinessUsers() {
     return new APIRequestGetBusinessUsers(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestCreateBusinessUser createBusinessUser() {
     return new APIRequestCreateBusinessUser(this.getPrefixedId().toString(), context);
-  }
-
-  public APIRequestGetBusinessProjects getBusinessProjects() {
-    return new APIRequestGetBusinessProjects(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestCreateClaimCustomConversion createClaimCustomConversion() {
@@ -402,6 +396,10 @@ public class Business extends APINode {
 
   public APIRequestCreateClientApp createClientApp() {
     return new APIRequestCreateClientApp(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestGetClientOffsiteSignalContainerBusinessObjects getClientOffsiteSignalContainerBusinessObjects() {
+    return new APIRequestGetClientOffsiteSignalContainerBusinessObjects(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetClientPages getClientPages() {
@@ -452,12 +450,24 @@ public class Business extends APINode {
     return new APIRequestGetContentDeliveryReport(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestCreateCpasBusinessSetupConfig createCpasBusinessSetupConfig() {
+    return new APIRequestCreateCpasBusinessSetupConfig(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestGetCpasMerchantConfig getCpasMerchantConfig() {
+    return new APIRequestGetCpasMerchantConfig(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestCreateCreateAndApplyPublisherBlockList createCreateAndApplyPublisherBlockList() {
     return new APIRequestCreateCreateAndApplyPublisherBlockList(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestCreateCustomConversion createCustomConversion() {
     return new APIRequestCreateCustomConversion(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreateDraftNegativeKeywordList createDraftNegativeKeywordList() {
+    return new APIRequestCreateDraftNegativeKeywordList(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetEventSourceGroups getEventSourceGroups() {
@@ -478,10 +488,6 @@ public class Business extends APINode {
 
   public APIRequestGetInitiatedAudienceSharingRequests getInitiatedAudienceSharingRequests() {
     return new APIRequestGetInitiatedAudienceSharingRequests(this.getPrefixedId().toString(), context);
-  }
-
-  public APIRequestGetInitiatedSharingAgreements getInitiatedSharingAgreements() {
-    return new APIRequestGetInitiatedSharingAgreements(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestDeleteInstagramAccounts deleteInstagramAccounts() {
@@ -516,8 +522,8 @@ public class Business extends APINode {
     return new APIRequestCreateManagedPartnerChildBusinessAsset(this.getPrefixedId().toString(), context);
   }
 
-  public APIRequestCreateMoveAsset createMoveAsset() {
-    return new APIRequestCreateMoveAsset(this.getPrefixedId().toString(), context);
+  public APIRequestGetNegativeKeywordLists getNegativeKeywordLists() {
+    return new APIRequestGetNegativeKeywordLists(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetOfflineConversionDataSets getOfflineConversionDataSets() {
@@ -558,6 +564,10 @@ public class Business extends APINode {
 
   public APIRequestGetOwnedInstagramAccounts getOwnedInstagramAccounts() {
     return new APIRequestGetOwnedInstagramAccounts(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects getOwnedOffsiteSignalContainerBusinessObjects() {
+    return new APIRequestGetOwnedOffsiteSignalContainerBusinessObjects(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetOwnedPages getOwnedPages() {
@@ -608,6 +618,10 @@ public class Business extends APINode {
     return new APIRequestGetPendingOwnedPages(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects getPendingSharedOffsiteSignalContainerBusinessObjects() {
+    return new APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestGetPendingUsers getPendingUsers() {
     return new APIRequestGetPendingUsers(this.getPrefixedId().toString(), context);
   }
@@ -622,14 +636,6 @@ public class Business extends APINode {
 
   public APIRequestGetReceivedAudienceSharingRequests getReceivedAudienceSharingRequests() {
     return new APIRequestGetReceivedAudienceSharingRequests(this.getPrefixedId().toString(), context);
-  }
-
-  public APIRequestGetReceivedSharingAgreements getReceivedSharingAgreements() {
-    return new APIRequestGetReceivedSharingAgreements(this.getPrefixedId().toString(), context);
-  }
-
-  public APIRequestGetSpacoDataSetCollections getSpacoDataSetCollections() {
-    return new APIRequestGetSpacoDataSetCollections(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetSystemUsers getSystemUsers() {
@@ -663,6 +669,13 @@ public class Business extends APINode {
 
   public BusinessManagedPartnerEligibility getFieldCollaborativeAdsManagedPartnerEligibility() {
     return mCollaborativeAdsManagedPartnerEligibility;
+  }
+
+  public CPASBusinessSetupConfig getFieldCpasBusinessSetupConfig() {
+    if (mCpasBusinessSetupConfig != null) {
+      mCpasBusinessSetupConfig.context = getContext();
+    }
+    return mCpasBusinessSetupConfig;
   }
 
   public Object getFieldCreatedBy() {
@@ -1616,6 +1629,116 @@ public class Business extends APINode {
 
     @Override
     public APIRequestCreateAdAccount requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestCreateAdNetworkApplication extends APIRequest<Application> {
+
+    Application lastResponse = null;
+    @Override
+    public Application getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "name",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public Application parseResponse(String response, String header) throws APIException {
+      return Application.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public Application execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public Application execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<Application> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<Application> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, Application>() {
+           public Application apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateAdNetworkApplication.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         }
+      );
+    };
+
+    public APIRequestCreateAdNetworkApplication(String nodeId, APIContext context) {
+      super(context, nodeId, "/adnetwork_applications", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateAdNetworkApplication setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateAdNetworkApplication setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateAdNetworkApplication setName (String name) {
+      this.setParam("name", name);
+      return this;
+    }
+
+    public APIRequestCreateAdNetworkApplication requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateAdNetworkApplication requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateAdNetworkApplication requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateAdNetworkApplication requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateAdNetworkApplication requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateAdNetworkApplication requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }
@@ -2662,6 +2785,7 @@ public class Business extends APINode {
       "block_offline_analytics",
       "collaborative_ads_managed_partner_business_info",
       "collaborative_ads_managed_partner_eligibility",
+      "cpas_business_setup_config",
       "created_by",
       "created_time",
       "extended_updated_time",
@@ -2788,6 +2912,13 @@ public class Business extends APINode {
     }
     public APIRequestGetAgencies requestCollaborativeAdsManagedPartnerEligibilityField (boolean value) {
       this.requestField("collaborative_ads_managed_partner_eligibility", value);
+      return this;
+    }
+    public APIRequestGetAgencies requestCpasBusinessSetupConfigField () {
+      return this.requestCpasBusinessSetupConfigField(true);
+    }
+    public APIRequestGetAgencies requestCpasBusinessSetupConfigField (boolean value) {
+      this.requestField("cpas_business_setup_config", value);
       return this;
     }
     public APIRequestGetAgencies requestCreatedByField () {
@@ -3330,7 +3461,6 @@ public class Business extends APINode {
       "amount_due",
       "billed_amount_details",
       "billing_period",
-      "campaign",
       "cdn_download_uri",
       "currency",
       "download_uri",
@@ -3520,13 +3650,6 @@ public class Business extends APINode {
       this.requestField("billing_period", value);
       return this;
     }
-    public APIRequestGetBusinessInvoices requestCampaignField () {
-      return this.requestCampaignField(true);
-    }
-    public APIRequestGetBusinessInvoices requestCampaignField (boolean value) {
-      this.requestField("campaign", value);
-      return this;
-    }
     public APIRequestGetBusinessInvoices requestCdnDownloadUriField () {
       return this.requestCdnDownloadUriField(true);
     }
@@ -3618,296 +3741,6 @@ public class Business extends APINode {
       this.requestField("type", value);
       return this;
     }
-  }
-
-  public static class APIRequestGetBusinessUnits extends APIRequest<BusinessUnit> {
-
-    APINodeList<BusinessUnit> lastResponse = null;
-    @Override
-    public APINodeList<BusinessUnit> getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-    };
-
-    public static final String[] FIELDS = {
-      "business",
-      "creation_time",
-      "currency",
-      "excluded_sources",
-      "id",
-      "is_enabled_for_measurement",
-      "name",
-      "time_zone",
-      "visits_available_date",
-    };
-
-    @Override
-    public APINodeList<BusinessUnit> parseResponse(String response, String header) throws APIException {
-      return BusinessUnit.parseResponse(response, getContext(), this, header);
-    }
-
-    @Override
-    public APINodeList<BusinessUnit> execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINodeList<BusinessUnit> execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINodeList<BusinessUnit>> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINodeList<BusinessUnit>> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<BusinessUnit>>() {
-           public APINodeList<BusinessUnit> apply(ResponseWrapper result) {
-             try {
-               return APIRequestGetBusinessUnits.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestGetBusinessUnits(String nodeId, APIContext context) {
-      super(context, nodeId, "/business_units", "GET", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestGetBusinessUnits setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetBusinessUnits setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestGetBusinessUnits requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestGetBusinessUnits requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetBusinessUnits requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestGetBusinessUnits requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetBusinessUnits requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetBusinessUnits requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-    public APIRequestGetBusinessUnits requestBusinessField () {
-      return this.requestBusinessField(true);
-    }
-    public APIRequestGetBusinessUnits requestBusinessField (boolean value) {
-      this.requestField("business", value);
-      return this;
-    }
-    public APIRequestGetBusinessUnits requestCreationTimeField () {
-      return this.requestCreationTimeField(true);
-    }
-    public APIRequestGetBusinessUnits requestCreationTimeField (boolean value) {
-      this.requestField("creation_time", value);
-      return this;
-    }
-    public APIRequestGetBusinessUnits requestCurrencyField () {
-      return this.requestCurrencyField(true);
-    }
-    public APIRequestGetBusinessUnits requestCurrencyField (boolean value) {
-      this.requestField("currency", value);
-      return this;
-    }
-    public APIRequestGetBusinessUnits requestExcludedSourcesField () {
-      return this.requestExcludedSourcesField(true);
-    }
-    public APIRequestGetBusinessUnits requestExcludedSourcesField (boolean value) {
-      this.requestField("excluded_sources", value);
-      return this;
-    }
-    public APIRequestGetBusinessUnits requestIdField () {
-      return this.requestIdField(true);
-    }
-    public APIRequestGetBusinessUnits requestIdField (boolean value) {
-      this.requestField("id", value);
-      return this;
-    }
-    public APIRequestGetBusinessUnits requestIsEnabledForMeasurementField () {
-      return this.requestIsEnabledForMeasurementField(true);
-    }
-    public APIRequestGetBusinessUnits requestIsEnabledForMeasurementField (boolean value) {
-      this.requestField("is_enabled_for_measurement", value);
-      return this;
-    }
-    public APIRequestGetBusinessUnits requestNameField () {
-      return this.requestNameField(true);
-    }
-    public APIRequestGetBusinessUnits requestNameField (boolean value) {
-      this.requestField("name", value);
-      return this;
-    }
-    public APIRequestGetBusinessUnits requestTimeZoneField () {
-      return this.requestTimeZoneField(true);
-    }
-    public APIRequestGetBusinessUnits requestTimeZoneField (boolean value) {
-      this.requestField("time_zone", value);
-      return this;
-    }
-    public APIRequestGetBusinessUnits requestVisitsAvailableDateField () {
-      return this.requestVisitsAvailableDateField(true);
-    }
-    public APIRequestGetBusinessUnits requestVisitsAvailableDateField (boolean value) {
-      this.requestField("visits_available_date", value);
-      return this;
-    }
-  }
-
-  public static class APIRequestCreateBusinessUnit extends APIRequest<BusinessUnit> {
-
-    BusinessUnit lastResponse = null;
-    @Override
-    public BusinessUnit getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-      "business_units",
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public BusinessUnit parseResponse(String response, String header) throws APIException {
-      return BusinessUnit.parseResponse(response, getContext(), this, header).head();
-    }
-
-    @Override
-    public BusinessUnit execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public BusinessUnit execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<BusinessUnit> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<BusinessUnit> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, BusinessUnit>() {
-           public BusinessUnit apply(ResponseWrapper result) {
-             try {
-               return APIRequestCreateBusinessUnit.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestCreateBusinessUnit(String nodeId, APIContext context) {
-      super(context, nodeId, "/business_units", "POST", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestCreateBusinessUnit setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateBusinessUnit setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestCreateBusinessUnit setBusinessUnits (List<Object> businessUnits) {
-      this.setParam("business_units", businessUnits);
-      return this;
-    }
-    public APIRequestCreateBusinessUnit setBusinessUnits (String businessUnits) {
-      this.setParam("business_units", businessUnits);
-      return this;
-    }
-
-    public APIRequestCreateBusinessUnit requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestCreateBusinessUnit requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateBusinessUnit requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestCreateBusinessUnit requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateBusinessUnit requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateBusinessUnit requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
   }
 
   public static class APIRequestGetBusinessUsers extends APIRequest<BusinessUser> {
@@ -4232,110 +4065,6 @@ public class Business extends APINode {
 
     @Override
     public APIRequestCreateBusinessUser requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-  }
-
-  public static class APIRequestGetBusinessProjects extends APIRequest<APINode> {
-
-    APINodeList<APINode> lastResponse = null;
-    @Override
-    public APINodeList<APINode> getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
-      return APINode.parseResponse(response, getContext(), this, header);
-    }
-
-    @Override
-    public APINodeList<APINode> execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<APINode>>() {
-           public APINodeList<APINode> apply(ResponseWrapper result) {
-             try {
-               return APIRequestGetBusinessProjects.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestGetBusinessProjects(String nodeId, APIContext context) {
-      super(context, nodeId, "/businessprojects", "GET", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestGetBusinessProjects setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetBusinessProjects setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestGetBusinessProjects requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestGetBusinessProjects requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetBusinessProjects requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestGetBusinessProjects requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetBusinessProjects requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetBusinessProjects requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }
@@ -6062,6 +5791,110 @@ public class Business extends APINode {
 
   }
 
+  public static class APIRequestGetClientOffsiteSignalContainerBusinessObjects extends APIRequest<APINode> {
+
+    APINodeList<APINode> lastResponse = null;
+    @Override
+    public APINodeList<APINode> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<APINode> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<APINode>>() {
+           public APINodeList<APINode> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetClientOffsiteSignalContainerBusinessObjects.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         }
+      );
+    };
+
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects(String nodeId, APIContext context) {
+      super(context, nodeId, "/client_offsite_signal_container_business_objects", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetClientOffsiteSignalContainerBusinessObjects requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
   public static class APIRequestGetClientPages extends APIRequest<Page> {
 
     APINodeList<Page> lastResponse = null;
@@ -6155,10 +5988,12 @@ public class Business extends APINode {
       "members",
       "merchant_id",
       "merchant_review_status",
+      "messaging_feature_status",
       "messenger_ads_default_icebreakers",
       "messenger_ads_default_page_welcome_message",
       "messenger_ads_default_quick_replies",
       "messenger_ads_quick_replies_type",
+      "mini_shop_storefront",
       "mission",
       "mpg",
       "name",
@@ -6882,6 +6717,13 @@ public class Business extends APINode {
       this.requestField("merchant_review_status", value);
       return this;
     }
+    public APIRequestGetClientPages requestMessagingFeatureStatusField () {
+      return this.requestMessagingFeatureStatusField(true);
+    }
+    public APIRequestGetClientPages requestMessagingFeatureStatusField (boolean value) {
+      this.requestField("messaging_feature_status", value);
+      return this;
+    }
     public APIRequestGetClientPages requestMessengerAdsDefaultIcebreakersField () {
       return this.requestMessengerAdsDefaultIcebreakersField(true);
     }
@@ -6908,6 +6750,13 @@ public class Business extends APINode {
     }
     public APIRequestGetClientPages requestMessengerAdsQuickRepliesTypeField (boolean value) {
       this.requestField("messenger_ads_quick_replies_type", value);
+      return this;
+    }
+    public APIRequestGetClientPages requestMiniShopStorefrontField () {
+      return this.requestMiniShopStorefrontField(true);
+    }
+    public APIRequestGetClientPages requestMiniShopStorefrontField (boolean value) {
+      this.requestField("mini_shop_storefront", value);
       return this;
     }
     public APIRequestGetClientPages requestMissionField () {
@@ -8206,6 +8055,7 @@ public class Business extends APINode {
       "block_offline_analytics",
       "collaborative_ads_managed_partner_business_info",
       "collaborative_ads_managed_partner_eligibility",
+      "cpas_business_setup_config",
       "created_by",
       "created_time",
       "extended_updated_time",
@@ -8332,6 +8182,13 @@ public class Business extends APINode {
     }
     public APIRequestGetClients requestCollaborativeAdsManagedPartnerEligibilityField (boolean value) {
       this.requestField("collaborative_ads_managed_partner_eligibility", value);
+      return this;
+    }
+    public APIRequestGetClients requestCpasBusinessSetupConfigField () {
+      return this.requestCpasBusinessSetupConfigField(true);
+    }
+    public APIRequestGetClients requestCpasBusinessSetupConfigField (boolean value) {
+      this.requestField("cpas_business_setup_config", value);
       return this;
     }
     public APIRequestGetClients requestCreatedByField () {
@@ -8987,6 +8844,7 @@ public class Business extends APINode {
     public static final String[] FIELDS = {
       "braintree_merchant_id",
       "checkout_message",
+      "commerce_store",
       "contact_email",
       "cta",
       "disable_checkout_urls",
@@ -9113,6 +8971,13 @@ public class Business extends APINode {
     }
     public APIRequestGetCommerceMerchantSettings requestCheckoutMessageField (boolean value) {
       this.requestField("checkout_message", value);
+      return this;
+    }
+    public APIRequestGetCommerceMerchantSettings requestCommerceStoreField () {
+      return this.requestCommerceStoreField(true);
+    }
+    public APIRequestGetCommerceMerchantSettings requestCommerceStoreField (boolean value) {
+      this.requestField("commerce_store", value);
       return this;
     }
     public APIRequestGetCommerceMerchantSettings requestContactEmailField () {
@@ -9474,6 +9339,310 @@ public class Business extends APINode {
     }
   }
 
+  public static class APIRequestCreateCpasBusinessSetupConfig extends APIRequest<CPASBusinessSetupConfig> {
+
+    CPASBusinessSetupConfig lastResponse = null;
+    @Override
+    public CPASBusinessSetupConfig getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "accepted_collab_ads_tos",
+      "ad_accounts",
+      "business_capabilities_status",
+      "capabilities_compliance_status",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public CPASBusinessSetupConfig parseResponse(String response, String header) throws APIException {
+      return CPASBusinessSetupConfig.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public CPASBusinessSetupConfig execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public CPASBusinessSetupConfig execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<CPASBusinessSetupConfig> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<CPASBusinessSetupConfig> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, CPASBusinessSetupConfig>() {
+           public CPASBusinessSetupConfig apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateCpasBusinessSetupConfig.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         }
+      );
+    };
+
+    public APIRequestCreateCpasBusinessSetupConfig(String nodeId, APIContext context) {
+      super(context, nodeId, "/cpas_business_setup_config", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateCpasBusinessSetupConfig setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateCpasBusinessSetupConfig setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateCpasBusinessSetupConfig setAcceptedCollabAdsTos (Boolean acceptedCollabAdsTos) {
+      this.setParam("accepted_collab_ads_tos", acceptedCollabAdsTos);
+      return this;
+    }
+    public APIRequestCreateCpasBusinessSetupConfig setAcceptedCollabAdsTos (String acceptedCollabAdsTos) {
+      this.setParam("accepted_collab_ads_tos", acceptedCollabAdsTos);
+      return this;
+    }
+
+    public APIRequestCreateCpasBusinessSetupConfig setAdAccounts (List<String> adAccounts) {
+      this.setParam("ad_accounts", adAccounts);
+      return this;
+    }
+    public APIRequestCreateCpasBusinessSetupConfig setAdAccounts (String adAccounts) {
+      this.setParam("ad_accounts", adAccounts);
+      return this;
+    }
+
+    public APIRequestCreateCpasBusinessSetupConfig setBusinessCapabilitiesStatus (Map<String, String> businessCapabilitiesStatus) {
+      this.setParam("business_capabilities_status", businessCapabilitiesStatus);
+      return this;
+    }
+    public APIRequestCreateCpasBusinessSetupConfig setBusinessCapabilitiesStatus (String businessCapabilitiesStatus) {
+      this.setParam("business_capabilities_status", businessCapabilitiesStatus);
+      return this;
+    }
+
+    public APIRequestCreateCpasBusinessSetupConfig setCapabilitiesComplianceStatus (Map<String, String> capabilitiesComplianceStatus) {
+      this.setParam("capabilities_compliance_status", capabilitiesComplianceStatus);
+      return this;
+    }
+    public APIRequestCreateCpasBusinessSetupConfig setCapabilitiesComplianceStatus (String capabilitiesComplianceStatus) {
+      this.setParam("capabilities_compliance_status", capabilitiesComplianceStatus);
+      return this;
+    }
+
+    public APIRequestCreateCpasBusinessSetupConfig requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateCpasBusinessSetupConfig requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateCpasBusinessSetupConfig requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateCpasBusinessSetupConfig requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateCpasBusinessSetupConfig requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateCpasBusinessSetupConfig requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestGetCpasMerchantConfig extends APIRequest<CPASMerchantConfig> {
+
+    APINodeList<CPASMerchantConfig> lastResponse = null;
+    @Override
+    public APINodeList<CPASMerchantConfig> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+    };
+
+    public static final String[] FIELDS = {
+      "accepted_tos",
+      "beta_features",
+      "business_outcomes_status",
+      "id",
+      "is_test_merchant",
+      "outcomes_compliance_status",
+      "qualified_to_onboard",
+    };
+
+    @Override
+    public APINodeList<CPASMerchantConfig> parseResponse(String response, String header) throws APIException {
+      return CPASMerchantConfig.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<CPASMerchantConfig> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<CPASMerchantConfig> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<CPASMerchantConfig>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<CPASMerchantConfig>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<CPASMerchantConfig>>() {
+           public APINodeList<CPASMerchantConfig> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetCpasMerchantConfig.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         }
+      );
+    };
+
+    public APIRequestGetCpasMerchantConfig(String nodeId, APIContext context) {
+      super(context, nodeId, "/cpas_merchant_config", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetCpasMerchantConfig setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetCpasMerchantConfig setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetCpasMerchantConfig requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetCpasMerchantConfig requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetCpasMerchantConfig requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetCpasMerchantConfig requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetCpasMerchantConfig requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetCpasMerchantConfig requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+    public APIRequestGetCpasMerchantConfig requestAcceptedTosField () {
+      return this.requestAcceptedTosField(true);
+    }
+    public APIRequestGetCpasMerchantConfig requestAcceptedTosField (boolean value) {
+      this.requestField("accepted_tos", value);
+      return this;
+    }
+    public APIRequestGetCpasMerchantConfig requestBetaFeaturesField () {
+      return this.requestBetaFeaturesField(true);
+    }
+    public APIRequestGetCpasMerchantConfig requestBetaFeaturesField (boolean value) {
+      this.requestField("beta_features", value);
+      return this;
+    }
+    public APIRequestGetCpasMerchantConfig requestBusinessOutcomesStatusField () {
+      return this.requestBusinessOutcomesStatusField(true);
+    }
+    public APIRequestGetCpasMerchantConfig requestBusinessOutcomesStatusField (boolean value) {
+      this.requestField("business_outcomes_status", value);
+      return this;
+    }
+    public APIRequestGetCpasMerchantConfig requestIdField () {
+      return this.requestIdField(true);
+    }
+    public APIRequestGetCpasMerchantConfig requestIdField (boolean value) {
+      this.requestField("id", value);
+      return this;
+    }
+    public APIRequestGetCpasMerchantConfig requestIsTestMerchantField () {
+      return this.requestIsTestMerchantField(true);
+    }
+    public APIRequestGetCpasMerchantConfig requestIsTestMerchantField (boolean value) {
+      this.requestField("is_test_merchant", value);
+      return this;
+    }
+    public APIRequestGetCpasMerchantConfig requestOutcomesComplianceStatusField () {
+      return this.requestOutcomesComplianceStatusField(true);
+    }
+    public APIRequestGetCpasMerchantConfig requestOutcomesComplianceStatusField (boolean value) {
+      this.requestField("outcomes_compliance_status", value);
+      return this;
+    }
+    public APIRequestGetCpasMerchantConfig requestQualifiedToOnboardField () {
+      return this.requestQualifiedToOnboardField(true);
+    }
+    public APIRequestGetCpasMerchantConfig requestQualifiedToOnboardField (boolean value) {
+      this.requestField("qualified_to_onboard", value);
+      return this;
+    }
+  }
+
   public static class APIRequestCreateCreateAndApplyPublisherBlockList extends APIRequest<APINode> {
 
     APINode lastResponse = null;
@@ -9752,6 +9921,120 @@ public class Business extends APINode {
 
     @Override
     public APIRequestCreateCustomConversion requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestCreateDraftNegativeKeywordList extends APIRequest<APINode> {
+
+    APINode lastResponse = null;
+    @Override
+    public APINode getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "negative_keyword_list_file",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINode parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public APINode execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINode execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINode> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINode>() {
+           public APINode apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateDraftNegativeKeywordList.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         }
+      );
+    };
+
+    public APIRequestCreateDraftNegativeKeywordList(String nodeId, APIContext context) {
+      super(context, nodeId, "/draft_negative_keyword_lists", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateDraftNegativeKeywordList setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateDraftNegativeKeywordList setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateDraftNegativeKeywordList setNegativeKeywordListFile (File negativeKeywordListFile) {
+      this.setParam("negative_keyword_list_file", negativeKeywordListFile);
+      return this;
+    }
+    public APIRequestCreateDraftNegativeKeywordList setNegativeKeywordListFile (String negativeKeywordListFile) {
+      this.setParam("negative_keyword_list_file", negativeKeywordListFile);
+      return this;
+    }
+
+    public APIRequestCreateDraftNegativeKeywordList requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateDraftNegativeKeywordList requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateDraftNegativeKeywordList requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateDraftNegativeKeywordList requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateDraftNegativeKeywordList requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateDraftNegativeKeywordList requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }
@@ -10538,142 +10821,6 @@ public class Business extends APINode {
     }
   }
 
-  public static class APIRequestGetInitiatedSharingAgreements extends APIRequest<BusinessAgreement> {
-
-    APINodeList<BusinessAgreement> lastResponse = null;
-    @Override
-    public APINodeList<BusinessAgreement> getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-      "receiving_business_id",
-      "request_status",
-    };
-
-    public static final String[] FIELDS = {
-      "id",
-      "request_status",
-    };
-
-    @Override
-    public APINodeList<BusinessAgreement> parseResponse(String response, String header) throws APIException {
-      return BusinessAgreement.parseResponse(response, getContext(), this, header);
-    }
-
-    @Override
-    public APINodeList<BusinessAgreement> execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINodeList<BusinessAgreement> execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINodeList<BusinessAgreement>> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINodeList<BusinessAgreement>> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<BusinessAgreement>>() {
-           public APINodeList<BusinessAgreement> apply(ResponseWrapper result) {
-             try {
-               return APIRequestGetInitiatedSharingAgreements.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestGetInitiatedSharingAgreements(String nodeId, APIContext context) {
-      super(context, nodeId, "/initiated_sharing_agreements", "GET", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestGetInitiatedSharingAgreements setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetInitiatedSharingAgreements setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestGetInitiatedSharingAgreements setReceivingBusinessId (String receivingBusinessId) {
-      this.setParam("receiving_business_id", receivingBusinessId);
-      return this;
-    }
-
-    public APIRequestGetInitiatedSharingAgreements setRequestStatus (BusinessAgreement.EnumRequestStatus requestStatus) {
-      this.setParam("request_status", requestStatus);
-      return this;
-    }
-    public APIRequestGetInitiatedSharingAgreements setRequestStatus (String requestStatus) {
-      this.setParam("request_status", requestStatus);
-      return this;
-    }
-
-    public APIRequestGetInitiatedSharingAgreements requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestGetInitiatedSharingAgreements requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetInitiatedSharingAgreements requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestGetInitiatedSharingAgreements requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetInitiatedSharingAgreements requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetInitiatedSharingAgreements requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-    public APIRequestGetInitiatedSharingAgreements requestIdField () {
-      return this.requestIdField(true);
-    }
-    public APIRequestGetInitiatedSharingAgreements requestIdField (boolean value) {
-      this.requestField("id", value);
-      return this;
-    }
-    public APIRequestGetInitiatedSharingAgreements requestRequestStatusField () {
-      return this.requestRequestStatusField(true);
-    }
-    public APIRequestGetInitiatedSharingAgreements requestRequestStatusField (boolean value) {
-      this.requestField("request_status", value);
-      return this;
-    }
-  }
-
   public static class APIRequestDeleteInstagramAccounts extends APIRequest<APINode> {
 
     APINodeList<APINode> lastResponse = null;
@@ -10802,6 +10949,7 @@ public class Business extends APINode {
       "is_private",
       "is_published",
       "media_count",
+      "mini_shop_storefront",
       "profile_pic",
       "username",
     };
@@ -10942,6 +11090,13 @@ public class Business extends APINode {
     }
     public APIRequestGetInstagramAccounts requestMediaCountField (boolean value) {
       this.requestField("media_count", value);
+      return this;
+    }
+    public APIRequestGetInstagramAccounts requestMiniShopStorefrontField () {
+      return this.requestMiniShopStorefrontField(true);
+    }
+    public APIRequestGetInstagramAccounts requestMiniShopStorefrontField (boolean value) {
+      this.requestField("mini_shop_storefront", value);
       return this;
     }
     public APIRequestGetInstagramAccounts requestProfilePicField () {
@@ -12002,49 +12157,47 @@ public class Business extends APINode {
 
   }
 
-  public static class APIRequestCreateMoveAsset extends APIRequest<Business> {
+  public static class APIRequestGetNegativeKeywordLists extends APIRequest<APINode> {
 
-    Business lastResponse = null;
+    APINodeList<APINode> lastResponse = null;
     @Override
-    public Business getLastResponse() {
+    public APINodeList<APINode> getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
-      "asset_id",
-      "client_id",
     };
 
     public static final String[] FIELDS = {
     };
 
     @Override
-    public Business parseResponse(String response, String header) throws APIException {
-      return Business.parseResponse(response, getContext(), this, header).head();
+    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header);
     }
 
     @Override
-    public Business execute() throws APIException {
+    public APINodeList<APINode> execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public Business execute(Map<String, Object> extraParams) throws APIException {
+    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<Business> executeAsync() throws APIException {
+    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<Business> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, Business>() {
-           public Business apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, APINodeList<APINode>>() {
+           public APINodeList<APINode> apply(ResponseWrapper result) {
              try {
-               return APIRequestCreateMoveAsset.this.parseResponse(result.getBody(), result.getHeader());
+               return APIRequestGetNegativeKeywordLists.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
                throw new RuntimeException(e);
              }
@@ -12053,38 +12206,28 @@ public class Business extends APINode {
       );
     };
 
-    public APIRequestCreateMoveAsset(String nodeId, APIContext context) {
-      super(context, nodeId, "/move_asset", "POST", Arrays.asList(PARAMS));
+    public APIRequestGetNegativeKeywordLists(String nodeId, APIContext context) {
+      super(context, nodeId, "/negative_keyword_lists", "GET", Arrays.asList(PARAMS));
     }
 
     @Override
-    public APIRequestCreateMoveAsset setParam(String param, Object value) {
+    public APIRequestGetNegativeKeywordLists setParam(String param, Object value) {
       setParamInternal(param, value);
       return this;
     }
 
     @Override
-    public APIRequestCreateMoveAsset setParams(Map<String, Object> params) {
+    public APIRequestGetNegativeKeywordLists setParams(Map<String, Object> params) {
       setParamsInternal(params);
       return this;
     }
 
 
-    public APIRequestCreateMoveAsset setAssetId (String assetId) {
-      this.setParam("asset_id", assetId);
-      return this;
-    }
-
-    public APIRequestCreateMoveAsset setClientId (String clientId) {
-      this.setParam("client_id", clientId);
-      return this;
-    }
-
-    public APIRequestCreateMoveAsset requestAllFields () {
+    public APIRequestGetNegativeKeywordLists requestAllFields () {
       return this.requestAllFields(true);
     }
 
-    public APIRequestCreateMoveAsset requestAllFields (boolean value) {
+    public APIRequestGetNegativeKeywordLists requestAllFields (boolean value) {
       for (String field : FIELDS) {
         this.requestField(field, value);
       }
@@ -12092,12 +12235,12 @@ public class Business extends APINode {
     }
 
     @Override
-    public APIRequestCreateMoveAsset requestFields (List<String> fields) {
+    public APIRequestGetNegativeKeywordLists requestFields (List<String> fields) {
       return this.requestFields(fields, true);
     }
 
     @Override
-    public APIRequestCreateMoveAsset requestFields (List<String> fields, boolean value) {
+    public APIRequestGetNegativeKeywordLists requestFields (List<String> fields, boolean value) {
       for (String field : fields) {
         this.requestField(field, value);
       }
@@ -12105,13 +12248,13 @@ public class Business extends APINode {
     }
 
     @Override
-    public APIRequestCreateMoveAsset requestField (String field) {
+    public APIRequestGetNegativeKeywordLists requestField (String field) {
       this.requestField(field, true);
       return this;
     }
 
     @Override
-    public APIRequestCreateMoveAsset requestField (String field, boolean value) {
+    public APIRequestGetNegativeKeywordLists requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }
@@ -14374,6 +14517,7 @@ public class Business extends APINode {
       "block_offline_analytics",
       "collaborative_ads_managed_partner_business_info",
       "collaborative_ads_managed_partner_eligibility",
+      "cpas_business_setup_config",
       "created_by",
       "created_time",
       "extended_updated_time",
@@ -14514,6 +14658,13 @@ public class Business extends APINode {
     }
     public APIRequestGetOwnedBusinesses requestCollaborativeAdsManagedPartnerEligibilityField (boolean value) {
       this.requestField("collaborative_ads_managed_partner_eligibility", value);
+      return this;
+    }
+    public APIRequestGetOwnedBusinesses requestCpasBusinessSetupConfigField () {
+      return this.requestCpasBusinessSetupConfigField(true);
+    }
+    public APIRequestGetOwnedBusinesses requestCpasBusinessSetupConfigField (boolean value) {
+      this.requestField("cpas_business_setup_config", value);
       return this;
     }
     public APIRequestGetOwnedBusinesses requestCreatedByField () {
@@ -14836,6 +14987,7 @@ public class Business extends APINode {
       "is_private",
       "is_published",
       "media_count",
+      "mini_shop_storefront",
       "profile_pic",
       "username",
     };
@@ -14978,6 +15130,13 @@ public class Business extends APINode {
       this.requestField("media_count", value);
       return this;
     }
+    public APIRequestGetOwnedInstagramAccounts requestMiniShopStorefrontField () {
+      return this.requestMiniShopStorefrontField(true);
+    }
+    public APIRequestGetOwnedInstagramAccounts requestMiniShopStorefrontField (boolean value) {
+      this.requestField("mini_shop_storefront", value);
+      return this;
+    }
     public APIRequestGetOwnedInstagramAccounts requestProfilePicField () {
       return this.requestProfilePicField(true);
     }
@@ -14992,6 +15151,110 @@ public class Business extends APINode {
       this.requestField("username", value);
       return this;
     }
+  }
+
+  public static class APIRequestGetOwnedOffsiteSignalContainerBusinessObjects extends APIRequest<APINode> {
+
+    APINodeList<APINode> lastResponse = null;
+    @Override
+    public APINodeList<APINode> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<APINode> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<APINode>>() {
+           public APINodeList<APINode> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetOwnedOffsiteSignalContainerBusinessObjects.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         }
+      );
+    };
+
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects(String nodeId, APIContext context) {
+      super(context, nodeId, "/owned_offsite_signal_container_business_objects", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetOwnedOffsiteSignalContainerBusinessObjects requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
   }
 
   public static class APIRequestGetOwnedPages extends APIRequest<Page> {
@@ -15087,10 +15350,12 @@ public class Business extends APINode {
       "members",
       "merchant_id",
       "merchant_review_status",
+      "messaging_feature_status",
       "messenger_ads_default_icebreakers",
       "messenger_ads_default_page_welcome_message",
       "messenger_ads_default_quick_replies",
       "messenger_ads_quick_replies_type",
+      "mini_shop_storefront",
       "mission",
       "mpg",
       "name",
@@ -15814,6 +16079,13 @@ public class Business extends APINode {
       this.requestField("merchant_review_status", value);
       return this;
     }
+    public APIRequestGetOwnedPages requestMessagingFeatureStatusField () {
+      return this.requestMessagingFeatureStatusField(true);
+    }
+    public APIRequestGetOwnedPages requestMessagingFeatureStatusField (boolean value) {
+      this.requestField("messaging_feature_status", value);
+      return this;
+    }
     public APIRequestGetOwnedPages requestMessengerAdsDefaultIcebreakersField () {
       return this.requestMessengerAdsDefaultIcebreakersField(true);
     }
@@ -15840,6 +16112,13 @@ public class Business extends APINode {
     }
     public APIRequestGetOwnedPages requestMessengerAdsQuickRepliesTypeField (boolean value) {
       this.requestField("messenger_ads_quick_replies_type", value);
+      return this;
+    }
+    public APIRequestGetOwnedPages requestMiniShopStorefrontField () {
+      return this.requestMiniShopStorefrontField(true);
+    }
+    public APIRequestGetOwnedPages requestMiniShopStorefrontField (boolean value) {
+      this.requestField("mini_shop_storefront", value);
       return this;
     }
     public APIRequestGetOwnedPages requestMissionField () {
@@ -17916,6 +18195,110 @@ public class Business extends APINode {
     }
   }
 
+  public static class APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects extends APIRequest<APINode> {
+
+    APINodeList<APINode> lastResponse = null;
+    @Override
+    public APINodeList<APINode> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<APINode> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<APINode>>() {
+           public APINodeList<APINode> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         }
+      );
+    };
+
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects(String nodeId, APIContext context) {
+      super(context, nodeId, "/pending_shared_offsite_signal_container_business_objects", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetPendingSharedOffsiteSignalContainerBusinessObjects requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
   public static class APIRequestGetPendingUsers extends APIRequest<BusinessRoleRequest> {
 
     APINodeList<BusinessRoleRequest> lastResponse = null;
@@ -18414,7 +18797,7 @@ public class Business extends APINode {
     };
 
     public APIRequestCreatePixelTo(String nodeId, APIContext context) {
-      super(context, nodeId, "/pixel_tos", "POST", Arrays.asList(PARAMS));
+      super(context, nodeId, "/pixeltos", "POST", Arrays.asList(PARAMS));
     }
 
     @Override
@@ -18634,246 +19017,6 @@ public class Business extends APINode {
       this.requestField("request_type", value);
       return this;
     }
-  }
-
-  public static class APIRequestGetReceivedSharingAgreements extends APIRequest<BusinessAgreement> {
-
-    APINodeList<BusinessAgreement> lastResponse = null;
-    @Override
-    public APINodeList<BusinessAgreement> getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-      "request_status",
-      "requesting_business_id",
-    };
-
-    public static final String[] FIELDS = {
-      "id",
-      "request_status",
-    };
-
-    @Override
-    public APINodeList<BusinessAgreement> parseResponse(String response, String header) throws APIException {
-      return BusinessAgreement.parseResponse(response, getContext(), this, header);
-    }
-
-    @Override
-    public APINodeList<BusinessAgreement> execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINodeList<BusinessAgreement> execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINodeList<BusinessAgreement>> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINodeList<BusinessAgreement>> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<BusinessAgreement>>() {
-           public APINodeList<BusinessAgreement> apply(ResponseWrapper result) {
-             try {
-               return APIRequestGetReceivedSharingAgreements.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestGetReceivedSharingAgreements(String nodeId, APIContext context) {
-      super(context, nodeId, "/received_sharing_agreements", "GET", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestGetReceivedSharingAgreements setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetReceivedSharingAgreements setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestGetReceivedSharingAgreements setRequestStatus (BusinessAgreement.EnumRequestStatus requestStatus) {
-      this.setParam("request_status", requestStatus);
-      return this;
-    }
-    public APIRequestGetReceivedSharingAgreements setRequestStatus (String requestStatus) {
-      this.setParam("request_status", requestStatus);
-      return this;
-    }
-
-    public APIRequestGetReceivedSharingAgreements setRequestingBusinessId (String requestingBusinessId) {
-      this.setParam("requesting_business_id", requestingBusinessId);
-      return this;
-    }
-
-    public APIRequestGetReceivedSharingAgreements requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestGetReceivedSharingAgreements requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetReceivedSharingAgreements requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestGetReceivedSharingAgreements requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetReceivedSharingAgreements requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetReceivedSharingAgreements requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-    public APIRequestGetReceivedSharingAgreements requestIdField () {
-      return this.requestIdField(true);
-    }
-    public APIRequestGetReceivedSharingAgreements requestIdField (boolean value) {
-      this.requestField("id", value);
-      return this;
-    }
-    public APIRequestGetReceivedSharingAgreements requestRequestStatusField () {
-      return this.requestRequestStatusField(true);
-    }
-    public APIRequestGetReceivedSharingAgreements requestRequestStatusField (boolean value) {
-      this.requestField("request_status", value);
-      return this;
-    }
-  }
-
-  public static class APIRequestGetSpacoDataSetCollections extends APIRequest<APINode> {
-
-    APINodeList<APINode> lastResponse = null;
-    @Override
-    public APINodeList<APINode> getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
-      return APINode.parseResponse(response, getContext(), this, header);
-    }
-
-    @Override
-    public APINodeList<APINode> execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<APINode>>() {
-           public APINodeList<APINode> apply(ResponseWrapper result) {
-             try {
-               return APIRequestGetSpacoDataSetCollections.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestGetSpacoDataSetCollections(String nodeId, APIContext context) {
-      super(context, nodeId, "/spaco_dataset_collections", "GET", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestGetSpacoDataSetCollections setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetSpacoDataSetCollections setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestGetSpacoDataSetCollections requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestGetSpacoDataSetCollections requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetSpacoDataSetCollections requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestGetSpacoDataSetCollections requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetSpacoDataSetCollections requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetSpacoDataSetCollections requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
   }
 
   public static class APIRequestGetSystemUsers extends APIRequest<SystemUser> {
@@ -19316,6 +19459,7 @@ public class Business extends APINode {
       "block_offline_analytics",
       "collaborative_ads_managed_partner_business_info",
       "collaborative_ads_managed_partner_eligibility",
+      "cpas_business_setup_config",
       "created_by",
       "created_time",
       "extended_updated_time",
@@ -19442,6 +19586,13 @@ public class Business extends APINode {
     }
     public APIRequestGet requestCollaborativeAdsManagedPartnerEligibilityField (boolean value) {
       this.requestField("collaborative_ads_managed_partner_eligibility", value);
+      return this;
+    }
+    public APIRequestGet requestCpasBusinessSetupConfigField () {
+      return this.requestCpasBusinessSetupConfigField(true);
+    }
+    public APIRequestGet requestCpasBusinessSetupConfigField (boolean value) {
+      this.requestField("cpas_business_setup_config", value);
       return this;
     }
     public APIRequestGet requestCreatedByField () {
@@ -19947,6 +20098,7 @@ public class Business extends APINode {
     this.mBlockOfflineAnalytics = instance.mBlockOfflineAnalytics;
     this.mCollaborativeAdsManagedPartnerBusinessInfo = instance.mCollaborativeAdsManagedPartnerBusinessInfo;
     this.mCollaborativeAdsManagedPartnerEligibility = instance.mCollaborativeAdsManagedPartnerEligibility;
+    this.mCpasBusinessSetupConfig = instance.mCpasBusinessSetupConfig;
     this.mCreatedBy = instance.mCreatedBy;
     this.mCreatedTime = instance.mCreatedTime;
     this.mExtendedUpdatedTime = instance.mExtendedUpdatedTime;

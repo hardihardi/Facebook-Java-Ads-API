@@ -1460,10 +1460,12 @@ public class AdVideo extends APINode {
       "members",
       "merchant_id",
       "merchant_review_status",
+      "messaging_feature_status",
       "messenger_ads_default_icebreakers",
       "messenger_ads_default_page_welcome_message",
       "messenger_ads_default_quick_replies",
       "messenger_ads_quick_replies_type",
+      "mini_shop_storefront",
       "mission",
       "mpg",
       "name",
@@ -2187,6 +2189,13 @@ public class AdVideo extends APINode {
       this.requestField("merchant_review_status", value);
       return this;
     }
+    public APIRequestGetCrosspostSharedPages requestMessagingFeatureStatusField () {
+      return this.requestMessagingFeatureStatusField(true);
+    }
+    public APIRequestGetCrosspostSharedPages requestMessagingFeatureStatusField (boolean value) {
+      this.requestField("messaging_feature_status", value);
+      return this;
+    }
     public APIRequestGetCrosspostSharedPages requestMessengerAdsDefaultIcebreakersField () {
       return this.requestMessengerAdsDefaultIcebreakersField(true);
     }
@@ -2213,6 +2222,13 @@ public class AdVideo extends APINode {
     }
     public APIRequestGetCrosspostSharedPages requestMessengerAdsQuickRepliesTypeField (boolean value) {
       this.requestField("messenger_ads_quick_replies_type", value);
+      return this;
+    }
+    public APIRequestGetCrosspostSharedPages requestMiniShopStorefrontField () {
+      return this.requestMiniShopStorefrontField(true);
+    }
+    public APIRequestGetCrosspostSharedPages requestMiniShopStorefrontField (boolean value) {
+      this.requestField("mini_shop_storefront", value);
       return this;
     }
     public APIRequestGetCrosspostSharedPages requestMissionField () {
@@ -3588,10 +3604,12 @@ public class AdVideo extends APINode {
       "members",
       "merchant_id",
       "merchant_review_status",
+      "messaging_feature_status",
       "messenger_ads_default_icebreakers",
       "messenger_ads_default_page_welcome_message",
       "messenger_ads_default_quick_replies",
       "messenger_ads_quick_replies_type",
+      "mini_shop_storefront",
       "mission",
       "mpg",
       "name",
@@ -4315,6 +4333,13 @@ public class AdVideo extends APINode {
       this.requestField("merchant_review_status", value);
       return this;
     }
+    public APIRequestGetSponsorTags requestMessagingFeatureStatusField () {
+      return this.requestMessagingFeatureStatusField(true);
+    }
+    public APIRequestGetSponsorTags requestMessagingFeatureStatusField (boolean value) {
+      this.requestField("messaging_feature_status", value);
+      return this;
+    }
     public APIRequestGetSponsorTags requestMessengerAdsDefaultIcebreakersField () {
       return this.requestMessengerAdsDefaultIcebreakersField(true);
     }
@@ -4341,6 +4366,13 @@ public class AdVideo extends APINode {
     }
     public APIRequestGetSponsorTags requestMessengerAdsQuickRepliesTypeField (boolean value) {
       this.requestField("messenger_ads_quick_replies_type", value);
+      return this;
+    }
+    public APIRequestGetSponsorTags requestMiniShopStorefrontField () {
+      return this.requestMiniShopStorefrontField(true);
+    }
+    public APIRequestGetSponsorTags requestMiniShopStorefrontField (boolean value) {
+      this.requestField("mini_shop_storefront", value);
       return this;
     }
     public APIRequestGetSponsorTags requestMissionField () {
@@ -6374,6 +6406,8 @@ public class AdVideo extends APINode {
       VALUE_ALOHA_CALL_VIDEO("ALOHA_CALL_VIDEO"),
       @SerializedName("ALOHA_SUPERFRAME")
       VALUE_ALOHA_SUPERFRAME("ALOHA_SUPERFRAME"),
+      @SerializedName("APP_REREVIEW_SCREENCAST")
+      VALUE_APP_REREVIEW_SCREENCAST("APP_REREVIEW_SCREENCAST"),
       @SerializedName("APP_REVIEW_SCREENCAST")
       VALUE_APP_REVIEW_SCREENCAST("APP_REVIEW_SCREENCAST"),
       @SerializedName("ASSET_MANAGER")
@@ -6382,8 +6416,12 @@ public class AdVideo extends APINode {
       VALUE_ATLAS_VIDEO("ATLAS_VIDEO"),
       @SerializedName("AUDIO_BROADCAST")
       VALUE_AUDIO_BROADCAST("AUDIO_BROADCAST"),
+      @SerializedName("AUDIO_COMMENT")
+      VALUE_AUDIO_COMMENT("AUDIO_COMMENT"),
       @SerializedName("BROADCAST")
       VALUE_BROADCAST("BROADCAST"),
+      @SerializedName("BULLETIN_ARTICLE_AUDIO")
+      VALUE_BULLETIN_ARTICLE_AUDIO("BULLETIN_ARTICLE_AUDIO"),
       @SerializedName("CANVAS")
       VALUE_CANVAS("CANVAS"),
       @SerializedName("CFC_VIDEO")
@@ -6394,14 +6432,14 @@ public class AdVideo extends APINode {
       VALUE_CONTAINED_POST_ATTACHMENT("CONTAINED_POST_ATTACHMENT"),
       @SerializedName("CONTAINED_POST_AUDIO_BROADCAST")
       VALUE_CONTAINED_POST_AUDIO_BROADCAST("CONTAINED_POST_AUDIO_BROADCAST"),
-      @SerializedName("CONTAINED_POST_BROADCAST")
-      VALUE_CONTAINED_POST_BROADCAST("CONTAINED_POST_BROADCAST"),
       @SerializedName("CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST")
       VALUE_CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST("CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST"),
       @SerializedName("COPYRIGHT_REFERENCE_BROADCAST")
       VALUE_COPYRIGHT_REFERENCE_BROADCAST("COPYRIGHT_REFERENCE_BROADCAST"),
       @SerializedName("COPYRIGHT_REFERENCE_VIDEO")
       VALUE_COPYRIGHT_REFERENCE_VIDEO("COPYRIGHT_REFERENCE_VIDEO"),
+      @SerializedName("CREATION_ML_PRECREATION")
+      VALUE_CREATION_ML_PRECREATION("CREATION_ML_PRECREATION"),
       @SerializedName("CULTURAL_MOMENT_DEPRECATED")
       VALUE_CULTURAL_MOMENT_DEPRECATED("CULTURAL_MOMENT_DEPRECATED"),
       @SerializedName("DCO_AD_ASSET_FEED")
@@ -6434,6 +6472,8 @@ public class AdVideo extends APINode {
       VALUE_FB_SHORTS("FB_SHORTS"),
       @SerializedName("FB_SHORTS_GROUP_POST")
       VALUE_FB_SHORTS_GROUP_POST("FB_SHORTS_GROUP_POST"),
+      @SerializedName("FB_SHORTS_PMV_POST")
+      VALUE_FB_SHORTS_PMV_POST("FB_SHORTS_PMV_POST"),
       @SerializedName("FB_SHORTS_POST")
       VALUE_FB_SHORTS_POST("FB_SHORTS_POST"),
       @SerializedName("FB_SHORTS_REMIX_POST")
@@ -6498,10 +6538,12 @@ public class AdVideo extends APINode {
       VALUE_LEARN("LEARN"),
       @SerializedName("LEGACY")
       VALUE_LEGACY("LEGACY"),
+      @SerializedName("LEGACY_CONTAINED_POST_BROADCAST")
+      VALUE_LEGACY_CONTAINED_POST_BROADCAST("LEGACY_CONTAINED_POST_BROADCAST"),
+      @SerializedName("LIVE_CLIP_PREVIEW")
+      VALUE_LIVE_CLIP_PREVIEW("LIVE_CLIP_PREVIEW"),
       @SerializedName("LIVE_CREATIVE_KIT_VIDEO")
       VALUE_LIVE_CREATIVE_KIT_VIDEO("LIVE_CREATIVE_KIT_VIDEO"),
-      @SerializedName("LIVE_LINEAR_VIDEO_CHANNEL_INTERNAL_BROADCAST")
-      VALUE_LIVE_LINEAR_VIDEO_CHANNEL_INTERNAL_BROADCAST("LIVE_LINEAR_VIDEO_CHANNEL_INTERNAL_BROADCAST"),
       @SerializedName("LIVE_PHOTO")
       VALUE_LIVE_PHOTO("LIVE_PHOTO"),
       @SerializedName("LOOK_NOW_DEPRECATED")
@@ -6518,10 +6560,16 @@ public class AdVideo extends APINode {
       VALUE_MUSIC_CLIP("MUSIC_CLIP"),
       @SerializedName("MUSIC_CLIP_IN_COMMENT")
       VALUE_MUSIC_CLIP_IN_COMMENT("MUSIC_CLIP_IN_COMMENT"),
+      @SerializedName("MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS")
+      VALUE_MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS("MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS"),
       @SerializedName("MUSIC_CLIP_IN_POLL_OPTION")
       VALUE_MUSIC_CLIP_IN_POLL_OPTION("MUSIC_CLIP_IN_POLL_OPTION"),
+      @SerializedName("MUSIC_CLIP_ON_DATING_PROFILE")
+      VALUE_MUSIC_CLIP_ON_DATING_PROFILE("MUSIC_CLIP_ON_DATING_PROFILE"),
       @SerializedName("NEO_ASYNC_GAME_VIDEO")
       VALUE_NEO_ASYNC_GAME_VIDEO("NEO_ASYNC_GAME_VIDEO"),
+      @SerializedName("NEW_CONTAINED_POST_BROADCAST")
+      VALUE_NEW_CONTAINED_POST_BROADCAST("NEW_CONTAINED_POST_BROADCAST"),
       @SerializedName("NO_STORY")
       VALUE_NO_STORY("NO_STORY"),
       @SerializedName("NO_STORY_WITH_ENTPOST")
@@ -6542,12 +6590,20 @@ public class AdVideo extends APINode {
       VALUE_PAGE_SLIDESHOW_VIDEO("PAGE_SLIDESHOW_VIDEO"),
       @SerializedName("PAID_CONTENT_PREVIEW")
       VALUE_PAID_CONTENT_PREVIEW("PAID_CONTENT_PREVIEW"),
+      @SerializedName("PAID_CONTENT_VIDEO")
+      VALUE_PAID_CONTENT_VIDEO("PAID_CONTENT_VIDEO"),
+      @SerializedName("PAID_CONTENT_VIDEO__POST")
+      VALUE_PAID_CONTENT_VIDEO__POST("PAID_CONTENT_VIDEO__POST"),
       @SerializedName("PARTNER_DIRECTORY_BRAND_MEDIA")
       VALUE_PARTNER_DIRECTORY_BRAND_MEDIA("PARTNER_DIRECTORY_BRAND_MEDIA"),
       @SerializedName("PIXELCLOUD")
       VALUE_PIXELCLOUD("PIXELCLOUD"),
       @SerializedName("PODCAST_HIGHLIGHT")
       VALUE_PODCAST_HIGHLIGHT("PODCAST_HIGHLIGHT"),
+      @SerializedName("PODCAST_ML_PREVIEW")
+      VALUE_PODCAST_ML_PREVIEW("PODCAST_ML_PREVIEW"),
+      @SerializedName("PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY")
+      VALUE_PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY("PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY"),
       @SerializedName("PODCAST_RSS")
       VALUE_PODCAST_RSS("PODCAST_RSS"),
       @SerializedName("PODCAST_RSS_EPHEMERAL")
@@ -6560,6 +6616,10 @@ public class AdVideo extends APINode {
       VALUE_PODCAST_VOICES_NO_NEWSFEED_STORY("PODCAST_VOICES_NO_NEWSFEED_STORY"),
       @SerializedName("PREMIERE_SOURCE")
       VALUE_PREMIERE_SOURCE("PREMIERE_SOURCE"),
+      @SerializedName("PREMIUM_MUSIC_VIDEO_CLIP")
+      VALUE_PREMIUM_MUSIC_VIDEO_CLIP("PREMIUM_MUSIC_VIDEO_CLIP"),
+      @SerializedName("PREMIUM_MUSIC_VIDEO_CROPPED_CLIP")
+      VALUE_PREMIUM_MUSIC_VIDEO_CROPPED_CLIP("PREMIUM_MUSIC_VIDEO_CROPPED_CLIP"),
       @SerializedName("PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY")
       VALUE_PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY("PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY"),
       @SerializedName("PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY")

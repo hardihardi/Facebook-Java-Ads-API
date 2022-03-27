@@ -59,6 +59,8 @@ public class CommerceMerchantSettings extends APINode {
   private String mBraintreeMerchantId = null;
   @SerializedName("checkout_message")
   private String mCheckoutMessage = null;
+  @SerializedName("commerce_store")
+  private Object mCommerceStore = null;
   @SerializedName("contact_email")
   private String mContactEmail = null;
   @SerializedName("cta")
@@ -358,6 +360,10 @@ public class CommerceMerchantSettings extends APINode {
     return new APIRequestCreateShippingProfile(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestGetShops getShops() {
+    return new APIRequestGetShops(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestGetTaxSettings getTaxSettings() {
     return new APIRequestGetTaxSettings(this.getPrefixedId().toString(), context);
   }
@@ -377,6 +383,10 @@ public class CommerceMerchantSettings extends APINode {
 
   public String getFieldCheckoutMessage() {
     return mCheckoutMessage;
+  }
+
+  public Object getFieldCommerceStore() {
+    return mCommerceStore;
   }
 
   public String getFieldContactEmail() {
@@ -2805,6 +2815,7 @@ public class CommerceMerchantSettings extends APINode {
     }
     public static final String[] PARAMS = {
       "handling_time",
+      "is_default",
       "is_default_shipping_profile",
       "name",
       "reference_id",
@@ -2876,6 +2887,15 @@ public class CommerceMerchantSettings extends APINode {
       return this;
     }
 
+    public APIRequestCreateShippingProfile setIsDefault (Boolean isDefault) {
+      this.setParam("is_default", isDefault);
+      return this;
+    }
+    public APIRequestCreateShippingProfile setIsDefault (String isDefault) {
+      this.setParam("is_default", isDefault);
+      return this;
+    }
+
     public APIRequestCreateShippingProfile setIsDefaultShippingProfile (Boolean isDefaultShippingProfile) {
       this.setParam("is_default_shipping_profile", isDefaultShippingProfile);
       return this;
@@ -2940,6 +2960,134 @@ public class CommerceMerchantSettings extends APINode {
       return this;
     }
 
+  }
+
+  public static class APIRequestGetShops extends APIRequest<Shop> {
+
+    APINodeList<Shop> lastResponse = null;
+    @Override
+    public APINodeList<Shop> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+    };
+
+    public static final String[] FIELDS = {
+      "fb_sales_channel",
+      "id",
+      "ig_sales_channel",
+    };
+
+    @Override
+    public APINodeList<Shop> parseResponse(String response, String header) throws APIException {
+      return Shop.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<Shop> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<Shop> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<Shop>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<Shop>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<Shop>>() {
+           public APINodeList<Shop> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetShops.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         }
+      );
+    };
+
+    public APIRequestGetShops(String nodeId, APIContext context) {
+      super(context, nodeId, "/shops", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetShops setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetShops setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetShops requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetShops requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetShops requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetShops requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetShops requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetShops requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+    public APIRequestGetShops requestFbSalesChannelField () {
+      return this.requestFbSalesChannelField(true);
+    }
+    public APIRequestGetShops requestFbSalesChannelField (boolean value) {
+      this.requestField("fb_sales_channel", value);
+      return this;
+    }
+    public APIRequestGetShops requestIdField () {
+      return this.requestIdField(true);
+    }
+    public APIRequestGetShops requestIdField (boolean value) {
+      this.requestField("id", value);
+      return this;
+    }
+    public APIRequestGetShops requestIgSalesChannelField () {
+      return this.requestIgSalesChannelField(true);
+    }
+    public APIRequestGetShops requestIgSalesChannelField (boolean value) {
+      this.requestField("ig_sales_channel", value);
+      return this;
+    }
   }
 
   public static class APIRequestGetTaxSettings extends APIRequest<APINode> {
@@ -3183,6 +3331,7 @@ public class CommerceMerchantSettings extends APINode {
     public static final String[] FIELDS = {
       "braintree_merchant_id",
       "checkout_message",
+      "commerce_store",
       "contact_email",
       "cta",
       "disable_checkout_urls",
@@ -3309,6 +3458,13 @@ public class CommerceMerchantSettings extends APINode {
     }
     public APIRequestGet requestCheckoutMessageField (boolean value) {
       this.requestField("checkout_message", value);
+      return this;
+    }
+    public APIRequestGet requestCommerceStoreField () {
+      return this.requestCommerceStoreField(true);
+    }
+    public APIRequestGet requestCommerceStoreField (boolean value) {
+      this.requestField("commerce_store", value);
       return this;
     }
     public APIRequestGet requestContactEmailField () {
@@ -3535,6 +3691,7 @@ public class CommerceMerchantSettings extends APINode {
   public CommerceMerchantSettings copyFrom(CommerceMerchantSettings instance) {
     this.mBraintreeMerchantId = instance.mBraintreeMerchantId;
     this.mCheckoutMessage = instance.mCheckoutMessage;
+    this.mCommerceStore = instance.mCommerceStore;
     this.mContactEmail = instance.mContactEmail;
     this.mCta = instance.mCta;
     this.mDisableCheckoutUrls = instance.mDisableCheckoutUrls;

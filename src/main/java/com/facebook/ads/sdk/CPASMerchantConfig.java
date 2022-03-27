@@ -54,68 +54,76 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class Domain extends APINode {
+public class CPASMerchantConfig extends APINode {
+  @SerializedName("accepted_tos")
+  private Boolean mAcceptedTos = null;
+  @SerializedName("beta_features")
+  private List<String> mBetaFeatures = null;
+  @SerializedName("business_outcomes_status")
+  private Map<String, String> mBusinessOutcomesStatus = null;
   @SerializedName("id")
   private String mId = null;
-  @SerializedName("name")
-  private String mName = null;
-  @SerializedName("url")
-  private String mUrl = null;
+  @SerializedName("is_test_merchant")
+  private Boolean mIsTestMerchant = null;
+  @SerializedName("outcomes_compliance_status")
+  private Map<String, Object> mOutcomesComplianceStatus = null;
+  @SerializedName("qualified_to_onboard")
+  private Boolean mQualifiedToOnboard = null;
   protected static Gson gson = null;
 
-  Domain() {
+  CPASMerchantConfig() {
   }
 
-  public Domain(Long id, APIContext context) {
+  public CPASMerchantConfig(Long id, APIContext context) {
     this(id.toString(), context);
   }
 
-  public Domain(String id, APIContext context) {
+  public CPASMerchantConfig(String id, APIContext context) {
     this.mId = id;
 
     this.context = context;
   }
 
-  public Domain fetch() throws APIException{
-    Domain newInstance = fetchById(this.getPrefixedId().toString(), this.context);
+  public CPASMerchantConfig fetch() throws APIException{
+    CPASMerchantConfig newInstance = fetchById(this.getPrefixedId().toString(), this.context);
     this.copyFrom(newInstance);
     return this;
   }
 
-  public static Domain fetchById(Long id, APIContext context) throws APIException {
+  public static CPASMerchantConfig fetchById(Long id, APIContext context) throws APIException {
     return fetchById(id.toString(), context);
   }
 
-  public static ListenableFuture<Domain> fetchByIdAsync(Long id, APIContext context) throws APIException {
+  public static ListenableFuture<CPASMerchantConfig> fetchByIdAsync(Long id, APIContext context) throws APIException {
     return fetchByIdAsync(id.toString(), context);
   }
 
-  public static Domain fetchById(String id, APIContext context) throws APIException {
+  public static CPASMerchantConfig fetchById(String id, APIContext context) throws APIException {
     return
       new APIRequestGet(id, context)
       .requestAllFields()
       .execute();
   }
 
-  public static ListenableFuture<Domain> fetchByIdAsync(String id, APIContext context) throws APIException {
+  public static ListenableFuture<CPASMerchantConfig> fetchByIdAsync(String id, APIContext context) throws APIException {
     return
       new APIRequestGet(id, context)
       .requestAllFields()
       .executeAsync();
   }
 
-  public static APINodeList<Domain> fetchByIds(List<String> ids, List<String> fields, APIContext context) throws APIException {
-    return (APINodeList<Domain>)(
-      new APIRequest<Domain>(context, "", "/", "GET", Domain.getParser())
+  public static APINodeList<CPASMerchantConfig> fetchByIds(List<String> ids, List<String> fields, APIContext context) throws APIException {
+    return (APINodeList<CPASMerchantConfig>)(
+      new APIRequest<CPASMerchantConfig>(context, "", "/", "GET", CPASMerchantConfig.getParser())
         .setParam("ids", APIRequest.joinStringList(ids))
         .requestFields(fields)
         .execute()
     );
   }
 
-  public static ListenableFuture<APINodeList<Domain>> fetchByIdsAsync(List<String> ids, List<String> fields, APIContext context) throws APIException {
+  public static ListenableFuture<APINodeList<CPASMerchantConfig>> fetchByIdsAsync(List<String> ids, List<String> fields, APIContext context) throws APIException {
     return
-      new APIRequest(context, "", "/", "GET", Domain.getParser())
+      new APIRequest(context, "", "/", "GET", CPASMerchantConfig.getParser())
         .setParam("ids", APIRequest.joinStringList(ids))
         .requestFields(fields)
         .executeAsyncBase();
@@ -128,12 +136,12 @@ public class Domain extends APINode {
   public String getId() {
     return getFieldId().toString();
   }
-  public static Domain loadJSON(String json, APIContext context, String header) {
-    Domain domain = getGson().fromJson(json, Domain.class);
+  public static CPASMerchantConfig loadJSON(String json, APIContext context, String header) {
+    CPASMerchantConfig cpasMerchantConfig = getGson().fromJson(json, CPASMerchantConfig.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(domain.toString());
+      JsonElement o2 = parser.parse(cpasMerchantConfig.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -143,14 +151,14 @@ public class Domain extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    domain.context = context;
-    domain.rawValue = json;
-    domain.header = header;
-    return domain;
+    cpasMerchantConfig.context = context;
+    cpasMerchantConfig.rawValue = json;
+    cpasMerchantConfig.header = header;
+    return cpasMerchantConfig;
   }
 
-  public static APINodeList<Domain> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<Domain> domains = new APINodeList<Domain>(request, json, header);
+  public static APINodeList<CPASMerchantConfig> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<CPASMerchantConfig> cpasMerchantConfigs = new APINodeList<CPASMerchantConfig>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -161,9 +169,9 @@ public class Domain extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          domains.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          cpasMerchantConfigs.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return domains;
+        return cpasMerchantConfigs;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -173,20 +181,20 @@ public class Domain extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                domains.setCursors(before, after);
+                cpasMerchantConfigs.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            domains.setPaging(previous, next);
+            cpasMerchantConfigs.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              domains.setAppSecret(context.getAppSecretProof());
+              cpasMerchantConfigs.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              domains.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              cpasMerchantConfigs.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -197,23 +205,23 @@ public class Domain extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  domains.add(loadJSON(entry.getValue().toString(), context, header));
+                  cpasMerchantConfigs.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              domains.add(loadJSON(obj.toString(), context, header));
+              cpasMerchantConfigs.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return domains;
+          return cpasMerchantConfigs;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              domains.add(loadJSON(entry.getValue().toString(), context, header));
+              cpasMerchantConfigs.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return domains;
+          return cpasMerchantConfigs;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -230,20 +238,20 @@ public class Domain extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              domains.add(loadJSON(value.toString(), context, header));
+              cpasMerchantConfigs.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return domains;
+            return cpasMerchantConfigs;
           }
 
           // Sixth, check if it's pure JsonObject
-          domains.clear();
-          domains.add(loadJSON(json, context, header));
-          return domains;
+          cpasMerchantConfigs.clear();
+          cpasMerchantConfigs.add(loadJSON(json, context, header));
+          return cpasMerchantConfigs;
         }
       }
     } catch (Exception e) {
@@ -275,62 +283,82 @@ public class Domain extends APINode {
   }
 
 
+  public Boolean getFieldAcceptedTos() {
+    return mAcceptedTos;
+  }
+
+  public List<String> getFieldBetaFeatures() {
+    return mBetaFeatures;
+  }
+
+  public Map<String, String> getFieldBusinessOutcomesStatus() {
+    return mBusinessOutcomesStatus;
+  }
+
   public String getFieldId() {
     return mId;
   }
 
-  public String getFieldName() {
-    return mName;
+  public Boolean getFieldIsTestMerchant() {
+    return mIsTestMerchant;
   }
 
-  public String getFieldUrl() {
-    return mUrl;
+  public Map<String, Object> getFieldOutcomesComplianceStatus() {
+    return mOutcomesComplianceStatus;
+  }
+
+  public Boolean getFieldQualifiedToOnboard() {
+    return mQualifiedToOnboard;
   }
 
 
 
-  public static class APIRequestGet extends APIRequest<Domain> {
+  public static class APIRequestGet extends APIRequest<CPASMerchantConfig> {
 
-    Domain lastResponse = null;
+    CPASMerchantConfig lastResponse = null;
     @Override
-    public Domain getLastResponse() {
+    public CPASMerchantConfig getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
     };
 
     public static final String[] FIELDS = {
+      "accepted_tos",
+      "beta_features",
+      "business_outcomes_status",
       "id",
-      "name",
-      "url",
+      "is_test_merchant",
+      "outcomes_compliance_status",
+      "qualified_to_onboard",
     };
 
     @Override
-    public Domain parseResponse(String response, String header) throws APIException {
-      return Domain.parseResponse(response, getContext(), this, header).head();
+    public CPASMerchantConfig parseResponse(String response, String header) throws APIException {
+      return CPASMerchantConfig.parseResponse(response, getContext(), this, header).head();
     }
 
     @Override
-    public Domain execute() throws APIException {
+    public CPASMerchantConfig execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public Domain execute(Map<String, Object> extraParams) throws APIException {
+    public CPASMerchantConfig execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
       lastResponse = parseResponse(rw.getBody(), rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<Domain> executeAsync() throws APIException {
+    public ListenableFuture<CPASMerchantConfig> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<Domain> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<CPASMerchantConfig> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, Domain>() {
-           public Domain apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, CPASMerchantConfig>() {
+           public CPASMerchantConfig apply(ResponseWrapper result) {
              try {
                return APIRequestGet.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
@@ -394,6 +422,27 @@ public class Domain extends APINode {
       return this;
     }
 
+    public APIRequestGet requestAcceptedTosField () {
+      return this.requestAcceptedTosField(true);
+    }
+    public APIRequestGet requestAcceptedTosField (boolean value) {
+      this.requestField("accepted_tos", value);
+      return this;
+    }
+    public APIRequestGet requestBetaFeaturesField () {
+      return this.requestBetaFeaturesField(true);
+    }
+    public APIRequestGet requestBetaFeaturesField (boolean value) {
+      this.requestField("beta_features", value);
+      return this;
+    }
+    public APIRequestGet requestBusinessOutcomesStatusField () {
+      return this.requestBusinessOutcomesStatusField(true);
+    }
+    public APIRequestGet requestBusinessOutcomesStatusField (boolean value) {
+      this.requestField("business_outcomes_status", value);
+      return this;
+    }
     public APIRequestGet requestIdField () {
       return this.requestIdField(true);
     }
@@ -401,18 +450,25 @@ public class Domain extends APINode {
       this.requestField("id", value);
       return this;
     }
-    public APIRequestGet requestNameField () {
-      return this.requestNameField(true);
+    public APIRequestGet requestIsTestMerchantField () {
+      return this.requestIsTestMerchantField(true);
     }
-    public APIRequestGet requestNameField (boolean value) {
-      this.requestField("name", value);
+    public APIRequestGet requestIsTestMerchantField (boolean value) {
+      this.requestField("is_test_merchant", value);
       return this;
     }
-    public APIRequestGet requestUrlField () {
-      return this.requestUrlField(true);
+    public APIRequestGet requestOutcomesComplianceStatusField () {
+      return this.requestOutcomesComplianceStatusField(true);
     }
-    public APIRequestGet requestUrlField (boolean value) {
-      this.requestField("url", value);
+    public APIRequestGet requestOutcomesComplianceStatusField (boolean value) {
+      this.requestField("outcomes_compliance_status", value);
+      return this;
+    }
+    public APIRequestGet requestQualifiedToOnboardField () {
+      return this.requestQualifiedToOnboardField(true);
+    }
+    public APIRequestGet requestQualifiedToOnboardField (boolean value) {
+      this.requestField("qualified_to_onboard", value);
       return this;
     }
   }
@@ -431,19 +487,23 @@ public class Domain extends APINode {
     return gson;
   }
 
-  public Domain copyFrom(Domain instance) {
+  public CPASMerchantConfig copyFrom(CPASMerchantConfig instance) {
+    this.mAcceptedTos = instance.mAcceptedTos;
+    this.mBetaFeatures = instance.mBetaFeatures;
+    this.mBusinessOutcomesStatus = instance.mBusinessOutcomesStatus;
     this.mId = instance.mId;
-    this.mName = instance.mName;
-    this.mUrl = instance.mUrl;
+    this.mIsTestMerchant = instance.mIsTestMerchant;
+    this.mOutcomesComplianceStatus = instance.mOutcomesComplianceStatus;
+    this.mQualifiedToOnboard = instance.mQualifiedToOnboard;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<Domain> getParser() {
-    return new APIRequest.ResponseParser<Domain>() {
-      public APINodeList<Domain> parseResponse(String response, APIContext context, APIRequest<Domain> request, String header) throws MalformedResponseException {
-        return Domain.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<CPASMerchantConfig> getParser() {
+    return new APIRequest.ResponseParser<CPASMerchantConfig>() {
+      public APINodeList<CPASMerchantConfig> parseResponse(String response, APIContext context, APIRequest<CPASMerchantConfig> request, String header) throws MalformedResponseException {
+        return CPASMerchantConfig.parseResponse(response, context, request, header);
       }
     };
   }

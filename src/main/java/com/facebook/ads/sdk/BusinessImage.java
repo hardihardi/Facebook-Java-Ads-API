@@ -54,66 +54,82 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class BusinessAgreement extends APINode {
+public class BusinessImage extends APINode {
+  @SerializedName("business")
+  private Business mBusiness = null;
+  @SerializedName("creation_time")
+  private String mCreationTime = null;
+  @SerializedName("hash")
+  private String mHash = null;
+  @SerializedName("height")
+  private Long mHeight = null;
   @SerializedName("id")
   private String mId = null;
-  @SerializedName("request_status")
-  private String mRequestStatus = null;
+  @SerializedName("media_library_url")
+  private String mMediaLibraryUrl = null;
+  @SerializedName("name")
+  private String mName = null;
+  @SerializedName("url")
+  private String mUrl = null;
+  @SerializedName("url_128")
+  private String mUrl128 = null;
+  @SerializedName("width")
+  private Long mWidth = null;
   protected static Gson gson = null;
 
-  BusinessAgreement() {
+  BusinessImage() {
   }
 
-  public BusinessAgreement(Long id, APIContext context) {
+  public BusinessImage(Long id, APIContext context) {
     this(id.toString(), context);
   }
 
-  public BusinessAgreement(String id, APIContext context) {
+  public BusinessImage(String id, APIContext context) {
     this.mId = id;
 
     this.context = context;
   }
 
-  public BusinessAgreement fetch() throws APIException{
-    BusinessAgreement newInstance = fetchById(this.getPrefixedId().toString(), this.context);
+  public BusinessImage fetch() throws APIException{
+    BusinessImage newInstance = fetchById(this.getPrefixedId().toString(), this.context);
     this.copyFrom(newInstance);
     return this;
   }
 
-  public static BusinessAgreement fetchById(Long id, APIContext context) throws APIException {
+  public static BusinessImage fetchById(Long id, APIContext context) throws APIException {
     return fetchById(id.toString(), context);
   }
 
-  public static ListenableFuture<BusinessAgreement> fetchByIdAsync(Long id, APIContext context) throws APIException {
+  public static ListenableFuture<BusinessImage> fetchByIdAsync(Long id, APIContext context) throws APIException {
     return fetchByIdAsync(id.toString(), context);
   }
 
-  public static BusinessAgreement fetchById(String id, APIContext context) throws APIException {
+  public static BusinessImage fetchById(String id, APIContext context) throws APIException {
     return
       new APIRequestGet(id, context)
       .requestAllFields()
       .execute();
   }
 
-  public static ListenableFuture<BusinessAgreement> fetchByIdAsync(String id, APIContext context) throws APIException {
+  public static ListenableFuture<BusinessImage> fetchByIdAsync(String id, APIContext context) throws APIException {
     return
       new APIRequestGet(id, context)
       .requestAllFields()
       .executeAsync();
   }
 
-  public static APINodeList<BusinessAgreement> fetchByIds(List<String> ids, List<String> fields, APIContext context) throws APIException {
-    return (APINodeList<BusinessAgreement>)(
-      new APIRequest<BusinessAgreement>(context, "", "/", "GET", BusinessAgreement.getParser())
+  public static APINodeList<BusinessImage> fetchByIds(List<String> ids, List<String> fields, APIContext context) throws APIException {
+    return (APINodeList<BusinessImage>)(
+      new APIRequest<BusinessImage>(context, "", "/", "GET", BusinessImage.getParser())
         .setParam("ids", APIRequest.joinStringList(ids))
         .requestFields(fields)
         .execute()
     );
   }
 
-  public static ListenableFuture<APINodeList<BusinessAgreement>> fetchByIdsAsync(List<String> ids, List<String> fields, APIContext context) throws APIException {
+  public static ListenableFuture<APINodeList<BusinessImage>> fetchByIdsAsync(List<String> ids, List<String> fields, APIContext context) throws APIException {
     return
-      new APIRequest(context, "", "/", "GET", BusinessAgreement.getParser())
+      new APIRequest(context, "", "/", "GET", BusinessImage.getParser())
         .setParam("ids", APIRequest.joinStringList(ids))
         .requestFields(fields)
         .executeAsyncBase();
@@ -126,12 +142,12 @@ public class BusinessAgreement extends APINode {
   public String getId() {
     return getFieldId().toString();
   }
-  public static BusinessAgreement loadJSON(String json, APIContext context, String header) {
-    BusinessAgreement businessAgreement = getGson().fromJson(json, BusinessAgreement.class);
+  public static BusinessImage loadJSON(String json, APIContext context, String header) {
+    BusinessImage businessImage = getGson().fromJson(json, BusinessImage.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(businessAgreement.toString());
+      JsonElement o2 = parser.parse(businessImage.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -141,14 +157,14 @@ public class BusinessAgreement extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    businessAgreement.context = context;
-    businessAgreement.rawValue = json;
-    businessAgreement.header = header;
-    return businessAgreement;
+    businessImage.context = context;
+    businessImage.rawValue = json;
+    businessImage.header = header;
+    return businessImage;
   }
 
-  public static APINodeList<BusinessAgreement> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<BusinessAgreement> businessAgreements = new APINodeList<BusinessAgreement>(request, json, header);
+  public static APINodeList<BusinessImage> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<BusinessImage> businessImages = new APINodeList<BusinessImage>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -159,9 +175,9 @@ public class BusinessAgreement extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          businessAgreements.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          businessImages.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return businessAgreements;
+        return businessImages;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -171,20 +187,20 @@ public class BusinessAgreement extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                businessAgreements.setCursors(before, after);
+                businessImages.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            businessAgreements.setPaging(previous, next);
+            businessImages.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              businessAgreements.setAppSecret(context.getAppSecretProof());
+              businessImages.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              businessAgreements.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              businessImages.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -195,23 +211,23 @@ public class BusinessAgreement extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  businessAgreements.add(loadJSON(entry.getValue().toString(), context, header));
+                  businessImages.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              businessAgreements.add(loadJSON(obj.toString(), context, header));
+              businessImages.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return businessAgreements;
+          return businessImages;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              businessAgreements.add(loadJSON(entry.getValue().toString(), context, header));
+              businessImages.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return businessAgreements;
+          return businessImages;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -228,20 +244,20 @@ public class BusinessAgreement extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              businessAgreements.add(loadJSON(value.toString(), context, header));
+              businessImages.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return businessAgreements;
+            return businessImages;
           }
 
           // Sixth, check if it's pure JsonObject
-          businessAgreements.clear();
-          businessAgreements.add(loadJSON(json, context, header));
-          return businessAgreements;
+          businessImages.clear();
+          businessImages.add(loadJSON(json, context, header));
+          return businessImages;
         }
       }
     } catch (Exception e) {
@@ -272,62 +288,101 @@ public class BusinessAgreement extends APINode {
     return new APIRequestGet(this.getPrefixedId().toString(), context);
   }
 
-  public APIRequestUpdate update() {
-    return new APIRequestUpdate(this.getPrefixedId().toString(), context);
+
+  public Business getFieldBusiness() {
+    if (mBusiness != null) {
+      mBusiness.context = getContext();
+    }
+    return mBusiness;
   }
 
+  public String getFieldCreationTime() {
+    return mCreationTime;
+  }
+
+  public String getFieldHash() {
+    return mHash;
+  }
+
+  public Long getFieldHeight() {
+    return mHeight;
+  }
 
   public String getFieldId() {
     return mId;
   }
 
-  public String getFieldRequestStatus() {
-    return mRequestStatus;
+  public String getFieldMediaLibraryUrl() {
+    return mMediaLibraryUrl;
+  }
+
+  public String getFieldName() {
+    return mName;
+  }
+
+  public String getFieldUrl() {
+    return mUrl;
+  }
+
+  public String getFieldUrl128() {
+    return mUrl128;
+  }
+
+  public Long getFieldWidth() {
+    return mWidth;
   }
 
 
 
-  public static class APIRequestGet extends APIRequest<BusinessAgreement> {
+  public static class APIRequestGet extends APIRequest<BusinessImage> {
 
-    BusinessAgreement lastResponse = null;
+    BusinessImage lastResponse = null;
     @Override
-    public BusinessAgreement getLastResponse() {
+    public BusinessImage getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
     };
 
     public static final String[] FIELDS = {
+      "business",
+      "creation_time",
+      "hash",
+      "height",
       "id",
-      "request_status",
+      "media_library_url",
+      "name",
+      "url",
+      "url_128",
+      "width",
     };
 
     @Override
-    public BusinessAgreement parseResponse(String response, String header) throws APIException {
-      return BusinessAgreement.parseResponse(response, getContext(), this, header).head();
+    public BusinessImage parseResponse(String response, String header) throws APIException {
+      return BusinessImage.parseResponse(response, getContext(), this, header).head();
     }
 
     @Override
-    public BusinessAgreement execute() throws APIException {
+    public BusinessImage execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public BusinessAgreement execute(Map<String, Object> extraParams) throws APIException {
+    public BusinessImage execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
       lastResponse = parseResponse(rw.getBody(), rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<BusinessAgreement> executeAsync() throws APIException {
+    public ListenableFuture<BusinessImage> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<BusinessAgreement> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<BusinessImage> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, BusinessAgreement>() {
-           public BusinessAgreement apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, BusinessImage>() {
+           public BusinessImage apply(ResponseWrapper result) {
              try {
                return APIRequestGet.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
@@ -391,6 +446,34 @@ public class BusinessAgreement extends APINode {
       return this;
     }
 
+    public APIRequestGet requestBusinessField () {
+      return this.requestBusinessField(true);
+    }
+    public APIRequestGet requestBusinessField (boolean value) {
+      this.requestField("business", value);
+      return this;
+    }
+    public APIRequestGet requestCreationTimeField () {
+      return this.requestCreationTimeField(true);
+    }
+    public APIRequestGet requestCreationTimeField (boolean value) {
+      this.requestField("creation_time", value);
+      return this;
+    }
+    public APIRequestGet requestHashField () {
+      return this.requestHashField(true);
+    }
+    public APIRequestGet requestHashField (boolean value) {
+      this.requestField("hash", value);
+      return this;
+    }
+    public APIRequestGet requestHeightField () {
+      return this.requestHeightField(true);
+    }
+    public APIRequestGet requestHeightField (boolean value) {
+      this.requestField("height", value);
+      return this;
+    }
     public APIRequestGet requestIdField () {
       return this.requestIdField(true);
     }
@@ -398,162 +481,41 @@ public class BusinessAgreement extends APINode {
       this.requestField("id", value);
       return this;
     }
-    public APIRequestGet requestRequestStatusField () {
-      return this.requestRequestStatusField(true);
+    public APIRequestGet requestMediaLibraryUrlField () {
+      return this.requestMediaLibraryUrlField(true);
     }
-    public APIRequestGet requestRequestStatusField (boolean value) {
-      this.requestField("request_status", value);
+    public APIRequestGet requestMediaLibraryUrlField (boolean value) {
+      this.requestField("media_library_url", value);
       return this;
     }
-  }
-
-  public static class APIRequestUpdate extends APIRequest<BusinessAgreement> {
-
-    BusinessAgreement lastResponse = null;
-    @Override
-    public BusinessAgreement getLastResponse() {
-      return lastResponse;
+    public APIRequestGet requestNameField () {
+      return this.requestNameField(true);
     }
-    public static final String[] PARAMS = {
-      "asset_id",
-      "request_status",
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public BusinessAgreement parseResponse(String response, String header) throws APIException {
-      return BusinessAgreement.parseResponse(response, getContext(), this, header).head();
-    }
-
-    @Override
-    public BusinessAgreement execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public BusinessAgreement execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<BusinessAgreement> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<BusinessAgreement> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, BusinessAgreement>() {
-           public BusinessAgreement apply(ResponseWrapper result) {
-             try {
-               return APIRequestUpdate.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestUpdate(String nodeId, APIContext context) {
-      super(context, nodeId, "/", "POST", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestUpdate setParam(String param, Object value) {
-      setParamInternal(param, value);
+    public APIRequestGet requestNameField (boolean value) {
+      this.requestField("name", value);
       return this;
     }
-
-    @Override
-    public APIRequestUpdate setParams(Map<String, Object> params) {
-      setParamsInternal(params);
+    public APIRequestGet requestUrlField () {
+      return this.requestUrlField(true);
+    }
+    public APIRequestGet requestUrlField (boolean value) {
+      this.requestField("url", value);
       return this;
     }
-
-
-    public APIRequestUpdate setAssetId (Long assetId) {
-      this.setParam("asset_id", assetId);
+    public APIRequestGet requestUrl128Field () {
+      return this.requestUrl128Field(true);
+    }
+    public APIRequestGet requestUrl128Field (boolean value) {
+      this.requestField("url_128", value);
       return this;
     }
-    public APIRequestUpdate setAssetId (String assetId) {
-      this.setParam("asset_id", assetId);
+    public APIRequestGet requestWidthField () {
+      return this.requestWidthField(true);
+    }
+    public APIRequestGet requestWidthField (boolean value) {
+      this.requestField("width", value);
       return this;
     }
-
-    public APIRequestUpdate setRequestStatus (BusinessAgreement.EnumRequestStatus requestStatus) {
-      this.setParam("request_status", requestStatus);
-      return this;
-    }
-    public APIRequestUpdate setRequestStatus (String requestStatus) {
-      this.setParam("request_status", requestStatus);
-      return this;
-    }
-
-    public APIRequestUpdate requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestUpdate requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestUpdate requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestUpdate requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestUpdate requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestUpdate requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-  }
-
-  public static enum EnumRequestStatus {
-      @SerializedName("APPROVE")
-      VALUE_APPROVE("APPROVE"),
-      @SerializedName("DECLINE")
-      VALUE_DECLINE("DECLINE"),
-      @SerializedName("EXPIRED")
-      VALUE_EXPIRED("EXPIRED"),
-      @SerializedName("IN_PROGRESS")
-      VALUE_IN_PROGRESS("IN_PROGRESS"),
-      @SerializedName("PENDING")
-      VALUE_PENDING("PENDING"),
-      ;
-
-      private String value;
-
-      private EnumRequestStatus(String value) {
-        this.value = value;
-      }
-
-      @Override
-      public String toString() {
-        return value;
-      }
   }
 
 
@@ -570,18 +532,26 @@ public class BusinessAgreement extends APINode {
     return gson;
   }
 
-  public BusinessAgreement copyFrom(BusinessAgreement instance) {
+  public BusinessImage copyFrom(BusinessImage instance) {
+    this.mBusiness = instance.mBusiness;
+    this.mCreationTime = instance.mCreationTime;
+    this.mHash = instance.mHash;
+    this.mHeight = instance.mHeight;
     this.mId = instance.mId;
-    this.mRequestStatus = instance.mRequestStatus;
+    this.mMediaLibraryUrl = instance.mMediaLibraryUrl;
+    this.mName = instance.mName;
+    this.mUrl = instance.mUrl;
+    this.mUrl128 = instance.mUrl128;
+    this.mWidth = instance.mWidth;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<BusinessAgreement> getParser() {
-    return new APIRequest.ResponseParser<BusinessAgreement>() {
-      public APINodeList<BusinessAgreement> parseResponse(String response, APIContext context, APIRequest<BusinessAgreement> request, String header) throws MalformedResponseException {
-        return BusinessAgreement.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<BusinessImage> getParser() {
+    return new APIRequest.ResponseParser<BusinessImage>() {
+      public APINodeList<BusinessImage> parseResponse(String response, APIContext context, APIRequest<BusinessImage> request, String header) throws MalformedResponseException {
+        return BusinessImage.parseResponse(response, context, request, header);
       }
     };
   }

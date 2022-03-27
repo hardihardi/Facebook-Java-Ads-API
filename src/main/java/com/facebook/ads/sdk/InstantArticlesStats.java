@@ -54,27 +54,31 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class AdAccountReachEstimate extends APINode {
-  @SerializedName("estimate_ready")
-  private Boolean mEstimateReady = null;
-  @SerializedName("users_lower_bound")
-  private Long mUsersLowerBound = null;
-  @SerializedName("users_upper_bound")
-  private Long mUsersUpperBound = null;
+public class InstantArticlesStats extends APINode {
+  @SerializedName("error")
+  private String mError = null;
+  @SerializedName("metadata")
+  private Map<String, Object> mMetadata = null;
+  @SerializedName("metric")
+  private Object mMetric = null;
+  @SerializedName("totals")
+  private Map<String, Object> mTotals = null;
+  @SerializedName("x_axis_breakdown")
+  private List<Map<String, Object>> mXAxisBreakdown = null;
   protected static Gson gson = null;
 
-  public AdAccountReachEstimate() {
+  public InstantArticlesStats() {
   }
 
   public String getId() {
     return null;
   }
-  public static AdAccountReachEstimate loadJSON(String json, APIContext context, String header) {
-    AdAccountReachEstimate adAccountReachEstimate = getGson().fromJson(json, AdAccountReachEstimate.class);
+  public static InstantArticlesStats loadJSON(String json, APIContext context, String header) {
+    InstantArticlesStats instantArticlesStats = getGson().fromJson(json, InstantArticlesStats.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(adAccountReachEstimate.toString());
+      JsonElement o2 = parser.parse(instantArticlesStats.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -84,14 +88,14 @@ public class AdAccountReachEstimate extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    adAccountReachEstimate.context = context;
-    adAccountReachEstimate.rawValue = json;
-    adAccountReachEstimate.header = header;
-    return adAccountReachEstimate;
+    instantArticlesStats.context = context;
+    instantArticlesStats.rawValue = json;
+    instantArticlesStats.header = header;
+    return instantArticlesStats;
   }
 
-  public static APINodeList<AdAccountReachEstimate> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<AdAccountReachEstimate> adAccountReachEstimates = new APINodeList<AdAccountReachEstimate>(request, json, header);
+  public static APINodeList<InstantArticlesStats> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<InstantArticlesStats> instantArticlesStatss = new APINodeList<InstantArticlesStats>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -102,9 +106,9 @@ public class AdAccountReachEstimate extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          adAccountReachEstimates.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          instantArticlesStatss.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return adAccountReachEstimates;
+        return instantArticlesStatss;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -114,20 +118,20 @@ public class AdAccountReachEstimate extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                adAccountReachEstimates.setCursors(before, after);
+                instantArticlesStatss.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            adAccountReachEstimates.setPaging(previous, next);
+            instantArticlesStatss.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              adAccountReachEstimates.setAppSecret(context.getAppSecretProof());
+              instantArticlesStatss.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              adAccountReachEstimates.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              instantArticlesStatss.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -138,23 +142,23 @@ public class AdAccountReachEstimate extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  adAccountReachEstimates.add(loadJSON(entry.getValue().toString(), context, header));
+                  instantArticlesStatss.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              adAccountReachEstimates.add(loadJSON(obj.toString(), context, header));
+              instantArticlesStatss.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return adAccountReachEstimates;
+          return instantArticlesStatss;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              adAccountReachEstimates.add(loadJSON(entry.getValue().toString(), context, header));
+              instantArticlesStatss.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return adAccountReachEstimates;
+          return instantArticlesStatss;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -171,20 +175,20 @@ public class AdAccountReachEstimate extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              adAccountReachEstimates.add(loadJSON(value.toString(), context, header));
+              instantArticlesStatss.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return adAccountReachEstimates;
+            return instantArticlesStatss;
           }
 
           // Sixth, check if it's pure JsonObject
-          adAccountReachEstimates.clear();
-          adAccountReachEstimates.add(loadJSON(json, context, header));
-          return adAccountReachEstimates;
+          instantArticlesStatss.clear();
+          instantArticlesStatss.add(loadJSON(json, context, header));
+          return instantArticlesStatss;
         }
       }
     } catch (Exception e) {
@@ -212,30 +216,48 @@ public class AdAccountReachEstimate extends APINode {
   }
 
 
-  public Boolean getFieldEstimateReady() {
-    return mEstimateReady;
+  public String getFieldError() {
+    return mError;
   }
 
-  public AdAccountReachEstimate setFieldEstimateReady(Boolean value) {
-    this.mEstimateReady = value;
+  public InstantArticlesStats setFieldError(String value) {
+    this.mError = value;
     return this;
   }
 
-  public Long getFieldUsersLowerBound() {
-    return mUsersLowerBound;
+  public Map<String, Object> getFieldMetadata() {
+    return mMetadata;
   }
 
-  public AdAccountReachEstimate setFieldUsersLowerBound(Long value) {
-    this.mUsersLowerBound = value;
+  public InstantArticlesStats setFieldMetadata(Map<String, Object> value) {
+    this.mMetadata = value;
     return this;
   }
 
-  public Long getFieldUsersUpperBound() {
-    return mUsersUpperBound;
+  public Object getFieldMetric() {
+    return mMetric;
   }
 
-  public AdAccountReachEstimate setFieldUsersUpperBound(Long value) {
-    this.mUsersUpperBound = value;
+  public InstantArticlesStats setFieldMetric(Object value) {
+    this.mMetric = value;
+    return this;
+  }
+
+  public Map<String, Object> getFieldTotals() {
+    return mTotals;
+  }
+
+  public InstantArticlesStats setFieldTotals(Map<String, Object> value) {
+    this.mTotals = value;
+    return this;
+  }
+
+  public List<Map<String, Object>> getFieldXAxisBreakdown() {
+    return mXAxisBreakdown;
+  }
+
+  public InstantArticlesStats setFieldXAxisBreakdown(List<Map<String, Object>> value) {
+    this.mXAxisBreakdown = value;
     return this;
   }
 
@@ -255,19 +277,21 @@ public class AdAccountReachEstimate extends APINode {
     return gson;
   }
 
-  public AdAccountReachEstimate copyFrom(AdAccountReachEstimate instance) {
-    this.mEstimateReady = instance.mEstimateReady;
-    this.mUsersLowerBound = instance.mUsersLowerBound;
-    this.mUsersUpperBound = instance.mUsersUpperBound;
+  public InstantArticlesStats copyFrom(InstantArticlesStats instance) {
+    this.mError = instance.mError;
+    this.mMetadata = instance.mMetadata;
+    this.mMetric = instance.mMetric;
+    this.mTotals = instance.mTotals;
+    this.mXAxisBreakdown = instance.mXAxisBreakdown;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<AdAccountReachEstimate> getParser() {
-    return new APIRequest.ResponseParser<AdAccountReachEstimate>() {
-      public APINodeList<AdAccountReachEstimate> parseResponse(String response, APIContext context, APIRequest<AdAccountReachEstimate> request, String header) throws MalformedResponseException {
-        return AdAccountReachEstimate.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<InstantArticlesStats> getParser() {
+    return new APIRequest.ResponseParser<InstantArticlesStats>() {
+      public APINodeList<InstantArticlesStats> parseResponse(String response, APIContext context, APIRequest<InstantArticlesStats> request, String header) throws MalformedResponseException {
+        return InstantArticlesStats.parseResponse(response, context, request, header);
       }
     };
   }

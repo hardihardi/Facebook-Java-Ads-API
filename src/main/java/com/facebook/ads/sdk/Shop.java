@@ -54,78 +54,68 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class LiveVideoInputStream extends APINode {
-  @SerializedName("dash_ingest_url")
-  private String mDashIngestUrl = null;
-  @SerializedName("dash_preview_url")
-  private String mDashPreviewUrl = null;
+public class Shop extends APINode {
+  @SerializedName("fb_sales_channel")
+  private Object mFbSalesChannel = null;
   @SerializedName("id")
   private String mId = null;
-  @SerializedName("is_master")
-  private Boolean mIsMaster = null;
-  @SerializedName("secure_stream_url")
-  private String mSecureStreamUrl = null;
-  @SerializedName("stream_health")
-  private Object mStreamHealth = null;
-  @SerializedName("stream_id")
-  private String mStreamId = null;
-  @SerializedName("stream_url")
-  private String mStreamUrl = null;
+  @SerializedName("ig_sales_channel")
+  private Object mIgSalesChannel = null;
   protected static Gson gson = null;
 
-  LiveVideoInputStream() {
+  Shop() {
   }
 
-  public LiveVideoInputStream(Long id, APIContext context) {
+  public Shop(Long id, APIContext context) {
     this(id.toString(), context);
   }
 
-  public LiveVideoInputStream(String id, APIContext context) {
+  public Shop(String id, APIContext context) {
     this.mId = id;
 
     this.context = context;
   }
 
-  public LiveVideoInputStream fetch() throws APIException{
-    LiveVideoInputStream newInstance = fetchById(this.getPrefixedId().toString(), this.context);
+  public Shop fetch() throws APIException{
+    Shop newInstance = fetchById(this.getPrefixedId().toString(), this.context);
     this.copyFrom(newInstance);
     return this;
   }
 
-  public static LiveVideoInputStream fetchById(Long id, APIContext context) throws APIException {
+  public static Shop fetchById(Long id, APIContext context) throws APIException {
     return fetchById(id.toString(), context);
   }
 
-  public static ListenableFuture<LiveVideoInputStream> fetchByIdAsync(Long id, APIContext context) throws APIException {
+  public static ListenableFuture<Shop> fetchByIdAsync(Long id, APIContext context) throws APIException {
     return fetchByIdAsync(id.toString(), context);
   }
 
-  public static LiveVideoInputStream fetchById(String id, APIContext context) throws APIException {
+  public static Shop fetchById(String id, APIContext context) throws APIException {
     return
       new APIRequestGet(id, context)
       .requestAllFields()
       .execute();
   }
 
-  public static ListenableFuture<LiveVideoInputStream> fetchByIdAsync(String id, APIContext context) throws APIException {
+  public static ListenableFuture<Shop> fetchByIdAsync(String id, APIContext context) throws APIException {
     return
       new APIRequestGet(id, context)
       .requestAllFields()
       .executeAsync();
   }
 
-  public static APINodeList<LiveVideoInputStream> fetchByIds(List<String> ids, List<String> fields, APIContext context) throws APIException {
-    return (APINodeList<LiveVideoInputStream>)(
-      new APIRequest<LiveVideoInputStream>(context, "", "/", "GET", LiveVideoInputStream.getParser())
+  public static APINodeList<Shop> fetchByIds(List<String> ids, List<String> fields, APIContext context) throws APIException {
+    return (APINodeList<Shop>)(
+      new APIRequest<Shop>(context, "", "/", "GET", Shop.getParser())
         .setParam("ids", APIRequest.joinStringList(ids))
         .requestFields(fields)
         .execute()
     );
   }
 
-  public static ListenableFuture<APINodeList<LiveVideoInputStream>> fetchByIdsAsync(List<String> ids, List<String> fields, APIContext context) throws APIException {
+  public static ListenableFuture<APINodeList<Shop>> fetchByIdsAsync(List<String> ids, List<String> fields, APIContext context) throws APIException {
     return
-      new APIRequest(context, "", "/", "GET", LiveVideoInputStream.getParser())
+      new APIRequest(context, "", "/", "GET", Shop.getParser())
         .setParam("ids", APIRequest.joinStringList(ids))
         .requestFields(fields)
         .executeAsyncBase();
@@ -138,12 +128,12 @@ public class LiveVideoInputStream extends APINode {
   public String getId() {
     return getFieldId().toString();
   }
-  public static LiveVideoInputStream loadJSON(String json, APIContext context, String header) {
-    LiveVideoInputStream liveVideoInputStream = getGson().fromJson(json, LiveVideoInputStream.class);
+  public static Shop loadJSON(String json, APIContext context, String header) {
+    Shop shop = getGson().fromJson(json, Shop.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(liveVideoInputStream.toString());
+      JsonElement o2 = parser.parse(shop.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -153,14 +143,14 @@ public class LiveVideoInputStream extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    liveVideoInputStream.context = context;
-    liveVideoInputStream.rawValue = json;
-    liveVideoInputStream.header = header;
-    return liveVideoInputStream;
+    shop.context = context;
+    shop.rawValue = json;
+    shop.header = header;
+    return shop;
   }
 
-  public static APINodeList<LiveVideoInputStream> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<LiveVideoInputStream> liveVideoInputStreams = new APINodeList<LiveVideoInputStream>(request, json, header);
+  public static APINodeList<Shop> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<Shop> shops = new APINodeList<Shop>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -171,9 +161,9 @@ public class LiveVideoInputStream extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          liveVideoInputStreams.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          shops.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return liveVideoInputStreams;
+        return shops;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -183,20 +173,20 @@ public class LiveVideoInputStream extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                liveVideoInputStreams.setCursors(before, after);
+                shops.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            liveVideoInputStreams.setPaging(previous, next);
+            shops.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              liveVideoInputStreams.setAppSecret(context.getAppSecretProof());
+              shops.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              liveVideoInputStreams.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              shops.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -207,23 +197,23 @@ public class LiveVideoInputStream extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  liveVideoInputStreams.add(loadJSON(entry.getValue().toString(), context, header));
+                  shops.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              liveVideoInputStreams.add(loadJSON(obj.toString(), context, header));
+              shops.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return liveVideoInputStreams;
+          return shops;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              liveVideoInputStreams.add(loadJSON(entry.getValue().toString(), context, header));
+              shops.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return liveVideoInputStreams;
+          return shops;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -240,20 +230,20 @@ public class LiveVideoInputStream extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              liveVideoInputStreams.add(loadJSON(value.toString(), context, header));
+              shops.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return liveVideoInputStreams;
+            return shops;
           }
 
           // Sixth, check if it's pure JsonObject
-          liveVideoInputStreams.clear();
-          liveVideoInputStreams.add(loadJSON(json, context, header));
-          return liveVideoInputStreams;
+          shops.clear();
+          shops.add(loadJSON(json, context, header));
+          return shops;
         }
       }
     } catch (Exception e) {
@@ -285,88 +275,62 @@ public class LiveVideoInputStream extends APINode {
   }
 
 
-  public String getFieldDashIngestUrl() {
-    return mDashIngestUrl;
-  }
-
-  public String getFieldDashPreviewUrl() {
-    return mDashPreviewUrl;
+  public Object getFieldFbSalesChannel() {
+    return mFbSalesChannel;
   }
 
   public String getFieldId() {
     return mId;
   }
 
-  public Boolean getFieldIsMaster() {
-    return mIsMaster;
-  }
-
-  public String getFieldSecureStreamUrl() {
-    return mSecureStreamUrl;
-  }
-
-  public Object getFieldStreamHealth() {
-    return mStreamHealth;
-  }
-
-  public String getFieldStreamId() {
-    return mStreamId;
-  }
-
-  public String getFieldStreamUrl() {
-    return mStreamUrl;
+  public Object getFieldIgSalesChannel() {
+    return mIgSalesChannel;
   }
 
 
 
-  public static class APIRequestGet extends APIRequest<LiveVideoInputStream> {
+  public static class APIRequestGet extends APIRequest<Shop> {
 
-    LiveVideoInputStream lastResponse = null;
+    Shop lastResponse = null;
     @Override
-    public LiveVideoInputStream getLastResponse() {
+    public Shop getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
-      "target_token",
     };
 
     public static final String[] FIELDS = {
-      "dash_ingest_url",
-      "dash_preview_url",
+      "fb_sales_channel",
       "id",
-      "is_master",
-      "secure_stream_url",
-      "stream_health",
-      "stream_id",
-      "stream_url",
+      "ig_sales_channel",
     };
 
     @Override
-    public LiveVideoInputStream parseResponse(String response, String header) throws APIException {
-      return LiveVideoInputStream.parseResponse(response, getContext(), this, header).head();
+    public Shop parseResponse(String response, String header) throws APIException {
+      return Shop.parseResponse(response, getContext(), this, header).head();
     }
 
     @Override
-    public LiveVideoInputStream execute() throws APIException {
+    public Shop execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public LiveVideoInputStream execute(Map<String, Object> extraParams) throws APIException {
+    public Shop execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
       lastResponse = parseResponse(rw.getBody(), rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<LiveVideoInputStream> executeAsync() throws APIException {
+    public ListenableFuture<Shop> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<LiveVideoInputStream> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<Shop> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, LiveVideoInputStream>() {
-           public LiveVideoInputStream apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, Shop>() {
+           public Shop apply(ResponseWrapper result) {
              try {
                return APIRequestGet.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
@@ -393,11 +357,6 @@ public class LiveVideoInputStream extends APINode {
       return this;
     }
 
-
-    public APIRequestGet setTargetToken (String targetToken) {
-      this.setParam("target_token", targetToken);
-      return this;
-    }
 
     public APIRequestGet requestAllFields () {
       return this.requestAllFields(true);
@@ -435,18 +394,11 @@ public class LiveVideoInputStream extends APINode {
       return this;
     }
 
-    public APIRequestGet requestDashIngestUrlField () {
-      return this.requestDashIngestUrlField(true);
+    public APIRequestGet requestFbSalesChannelField () {
+      return this.requestFbSalesChannelField(true);
     }
-    public APIRequestGet requestDashIngestUrlField (boolean value) {
-      this.requestField("dash_ingest_url", value);
-      return this;
-    }
-    public APIRequestGet requestDashPreviewUrlField () {
-      return this.requestDashPreviewUrlField(true);
-    }
-    public APIRequestGet requestDashPreviewUrlField (boolean value) {
-      this.requestField("dash_preview_url", value);
+    public APIRequestGet requestFbSalesChannelField (boolean value) {
+      this.requestField("fb_sales_channel", value);
       return this;
     }
     public APIRequestGet requestIdField () {
@@ -456,39 +408,11 @@ public class LiveVideoInputStream extends APINode {
       this.requestField("id", value);
       return this;
     }
-    public APIRequestGet requestIsMasterField () {
-      return this.requestIsMasterField(true);
+    public APIRequestGet requestIgSalesChannelField () {
+      return this.requestIgSalesChannelField(true);
     }
-    public APIRequestGet requestIsMasterField (boolean value) {
-      this.requestField("is_master", value);
-      return this;
-    }
-    public APIRequestGet requestSecureStreamUrlField () {
-      return this.requestSecureStreamUrlField(true);
-    }
-    public APIRequestGet requestSecureStreamUrlField (boolean value) {
-      this.requestField("secure_stream_url", value);
-      return this;
-    }
-    public APIRequestGet requestStreamHealthField () {
-      return this.requestStreamHealthField(true);
-    }
-    public APIRequestGet requestStreamHealthField (boolean value) {
-      this.requestField("stream_health", value);
-      return this;
-    }
-    public APIRequestGet requestStreamIdField () {
-      return this.requestStreamIdField(true);
-    }
-    public APIRequestGet requestStreamIdField (boolean value) {
-      this.requestField("stream_id", value);
-      return this;
-    }
-    public APIRequestGet requestStreamUrlField () {
-      return this.requestStreamUrlField(true);
-    }
-    public APIRequestGet requestStreamUrlField (boolean value) {
-      this.requestField("stream_url", value);
+    public APIRequestGet requestIgSalesChannelField (boolean value) {
+      this.requestField("ig_sales_channel", value);
       return this;
     }
   }
@@ -507,24 +431,19 @@ public class LiveVideoInputStream extends APINode {
     return gson;
   }
 
-  public LiveVideoInputStream copyFrom(LiveVideoInputStream instance) {
-    this.mDashIngestUrl = instance.mDashIngestUrl;
-    this.mDashPreviewUrl = instance.mDashPreviewUrl;
+  public Shop copyFrom(Shop instance) {
+    this.mFbSalesChannel = instance.mFbSalesChannel;
     this.mId = instance.mId;
-    this.mIsMaster = instance.mIsMaster;
-    this.mSecureStreamUrl = instance.mSecureStreamUrl;
-    this.mStreamHealth = instance.mStreamHealth;
-    this.mStreamId = instance.mStreamId;
-    this.mStreamUrl = instance.mStreamUrl;
+    this.mIgSalesChannel = instance.mIgSalesChannel;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<LiveVideoInputStream> getParser() {
-    return new APIRequest.ResponseParser<LiveVideoInputStream>() {
-      public APINodeList<LiveVideoInputStream> parseResponse(String response, APIContext context, APIRequest<LiveVideoInputStream> request, String header) throws MalformedResponseException {
-        return LiveVideoInputStream.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<Shop> getParser() {
+    return new APIRequest.ResponseParser<Shop>() {
+      public APINodeList<Shop> parseResponse(String response, APIContext context, APIRequest<Shop> request, String header) throws MalformedResponseException {
+        return Shop.parseResponse(response, context, request, header);
       }
     };
   }

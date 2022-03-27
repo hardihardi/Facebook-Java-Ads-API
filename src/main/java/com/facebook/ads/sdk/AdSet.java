@@ -1517,6 +1517,7 @@ public class AdSet extends APINode {
       "call_to_action_type",
       "categorization_criteria",
       "category_media_source",
+      "collaborative_ads_lsb_image_bank_id",
       "destination_set_id",
       "dynamic_ad_voice",
       "effective_authorization_category",
@@ -1546,6 +1547,7 @@ public class AdSet extends APINode {
       "object_story_spec",
       "object_type",
       "object_url",
+      "omnichannel_link_spec",
       "place_page_set_id",
       "platform_customizations",
       "playable_asset_id",
@@ -1556,6 +1558,7 @@ public class AdSet extends APINode {
       "status",
       "template_url",
       "template_url_spec",
+      "thumbnail_id",
       "thumbnail_url",
       "title",
       "url_tags",
@@ -1741,6 +1744,13 @@ public class AdSet extends APINode {
     }
     public APIRequestGetAdCreatives requestCategoryMediaSourceField (boolean value) {
       this.requestField("category_media_source", value);
+      return this;
+    }
+    public APIRequestGetAdCreatives requestCollaborativeAdsLsbImageBankIdField () {
+      return this.requestCollaborativeAdsLsbImageBankIdField(true);
+    }
+    public APIRequestGetAdCreatives requestCollaborativeAdsLsbImageBankIdField (boolean value) {
+      this.requestField("collaborative_ads_lsb_image_bank_id", value);
       return this;
     }
     public APIRequestGetAdCreatives requestDestinationSetIdField () {
@@ -1946,6 +1956,13 @@ public class AdSet extends APINode {
       this.requestField("object_url", value);
       return this;
     }
+    public APIRequestGetAdCreatives requestOmnichannelLinkSpecField () {
+      return this.requestOmnichannelLinkSpecField(true);
+    }
+    public APIRequestGetAdCreatives requestOmnichannelLinkSpecField (boolean value) {
+      this.requestField("omnichannel_link_spec", value);
+      return this;
+    }
     public APIRequestGetAdCreatives requestPlacePageSetIdField () {
       return this.requestPlacePageSetIdField(true);
     }
@@ -2014,6 +2031,13 @@ public class AdSet extends APINode {
     }
     public APIRequestGetAdCreatives requestTemplateUrlSpecField (boolean value) {
       this.requestField("template_url_spec", value);
+      return this;
+    }
+    public APIRequestGetAdCreatives requestThumbnailIdField () {
+      return this.requestThumbnailIdField(true);
+    }
+    public APIRequestGetAdCreatives requestThumbnailIdField (boolean value) {
+      this.requestField("thumbnail_id", value);
       return this;
     }
     public APIRequestGetAdCreatives requestThumbnailUrlField () {
@@ -4045,7 +4069,8 @@ public class AdSet extends APINode {
     public static final String[] FIELDS = {
       "daily_outcomes_curve",
       "estimate_dau",
-      "estimate_mau",
+      "estimate_mau_lower_bound",
+      "estimate_mau_upper_bound",
       "estimate_ready",
       "targeting_optimization_types",
     };
@@ -4180,11 +4205,18 @@ public class AdSet extends APINode {
       this.requestField("estimate_dau", value);
       return this;
     }
-    public APIRequestGetDeliveryEstimate requestEstimateMauField () {
-      return this.requestEstimateMauField(true);
+    public APIRequestGetDeliveryEstimate requestEstimateMauLowerBoundField () {
+      return this.requestEstimateMauLowerBoundField(true);
     }
-    public APIRequestGetDeliveryEstimate requestEstimateMauField (boolean value) {
-      this.requestField("estimate_mau", value);
+    public APIRequestGetDeliveryEstimate requestEstimateMauLowerBoundField (boolean value) {
+      this.requestField("estimate_mau_lower_bound", value);
+      return this;
+    }
+    public APIRequestGetDeliveryEstimate requestEstimateMauUpperBoundField () {
+      return this.requestEstimateMauUpperBoundField(true);
+    }
+    public APIRequestGetDeliveryEstimate requestEstimateMauUpperBoundField (boolean value) {
+      this.requestField("estimate_mau_upper_bound", value);
       return this;
     }
     public APIRequestGetDeliveryEstimate requestEstimateReadyField () {
@@ -6224,14 +6256,12 @@ public class AdSet extends APINode {
   public static enum EnumOptimizationGoal {
       @SerializedName("AD_RECALL_LIFT")
       VALUE_AD_RECALL_LIFT("AD_RECALL_LIFT"),
-      @SerializedName("APP_DOWNLOADS")
-      VALUE_APP_DOWNLOADS("APP_DOWNLOADS"),
       @SerializedName("APP_INSTALLS")
       VALUE_APP_INSTALLS("APP_INSTALLS"),
-      @SerializedName("BRAND_AWARENESS")
-      VALUE_BRAND_AWARENESS("BRAND_AWARENESS"),
-      @SerializedName("CLICKS")
-      VALUE_CLICKS("CLICKS"),
+      @SerializedName("APP_INSTALLS_AND_OFFSITE_CONVERSIONS")
+      VALUE_APP_INSTALLS_AND_OFFSITE_CONVERSIONS("APP_INSTALLS_AND_OFFSITE_CONVERSIONS"),
+      @SerializedName("CONVERSATIONS")
+      VALUE_CONVERSATIONS("CONVERSATIONS"),
       @SerializedName("DERIVED_EVENTS")
       VALUE_DERIVED_EVENTS("DERIVED_EVENTS"),
       @SerializedName("ENGAGED_USERS")
@@ -6240,6 +6270,8 @@ public class AdSet extends APINode {
       VALUE_EVENT_RESPONSES("EVENT_RESPONSES"),
       @SerializedName("IMPRESSIONS")
       VALUE_IMPRESSIONS("IMPRESSIONS"),
+      @SerializedName("IN_APP_VALUE")
+      VALUE_IN_APP_VALUE("IN_APP_VALUE"),
       @SerializedName("LANDING_PAGE_VIEWS")
       VALUE_LANDING_PAGE_VIEWS("LANDING_PAGE_VIEWS"),
       @SerializedName("LEAD_GENERATION")
@@ -6248,12 +6280,8 @@ public class AdSet extends APINode {
       VALUE_LINK_CLICKS("LINK_CLICKS"),
       @SerializedName("NONE")
       VALUE_NONE("NONE"),
-      @SerializedName("OFFER_CLAIMS")
-      VALUE_OFFER_CLAIMS("OFFER_CLAIMS"),
       @SerializedName("OFFSITE_CONVERSIONS")
       VALUE_OFFSITE_CONVERSIONS("OFFSITE_CONVERSIONS"),
-      @SerializedName("PAGE_ENGAGEMENT")
-      VALUE_PAGE_ENGAGEMENT("PAGE_ENGAGEMENT"),
       @SerializedName("PAGE_LIKES")
       VALUE_PAGE_LIKES("PAGE_LIKES"),
       @SerializedName("POST_ENGAGEMENT")
@@ -6264,14 +6292,8 @@ public class AdSet extends APINode {
       VALUE_QUALITY_LEAD("QUALITY_LEAD"),
       @SerializedName("REACH")
       VALUE_REACH("REACH"),
-      @SerializedName("REPLIES")
-      VALUE_REPLIES("REPLIES"),
-      @SerializedName("SOCIAL_IMPRESSIONS")
-      VALUE_SOCIAL_IMPRESSIONS("SOCIAL_IMPRESSIONS"),
       @SerializedName("THRUPLAY")
       VALUE_THRUPLAY("THRUPLAY"),
-      @SerializedName("TWO_SECOND_CONTINUOUS_VIDEO_VIEWS")
-      VALUE_TWO_SECOND_CONTINUOUS_VIDEO_VIEWS("TWO_SECOND_CONTINUOUS_VIDEO_VIEWS"),
       @SerializedName("VALUE")
       VALUE_VALUE("VALUE"),
       @SerializedName("VISIT_INSTAGRAM_PROFILE")
@@ -6314,6 +6336,8 @@ public class AdSet extends APINode {
   }
 
   public static enum EnumDatePreset {
+      @SerializedName("data_maximum")
+      VALUE_DATA_MAXIMUM("data_maximum"),
       @SerializedName("last_14d")
       VALUE_LAST_14D("last_14d"),
       @SerializedName("last_28d")
@@ -6357,6 +6381,25 @@ public class AdSet extends APINode {
       private String value;
 
       private EnumDatePreset(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumOperator {
+      @SerializedName("ALL")
+      VALUE_ALL("ALL"),
+      @SerializedName("ANY")
+      VALUE_ANY("ANY"),
+      ;
+
+      private String value;
+
+      private EnumOperator(String value) {
         this.value = value;
       }
 
@@ -6502,30 +6545,13 @@ public class AdSet extends APINode {
       VALUE_ISSUES_ELECTIONS_POLITICS("ISSUES_ELECTIONS_POLITICS"),
       @SerializedName("NONE")
       VALUE_NONE("NONE"),
+      @SerializedName("ONLINE_GAMBLING_AND_GAMING")
+      VALUE_ONLINE_GAMBLING_AND_GAMING("ONLINE_GAMBLING_AND_GAMING"),
       ;
 
       private String value;
 
       private EnumTuneForCategory(String value) {
-        this.value = value;
-      }
-
-      @Override
-      public String toString() {
-        return value;
-      }
-  }
-
-  public static enum EnumOperator {
-      @SerializedName("ALL")
-      VALUE_ALL("ALL"),
-      @SerializedName("ANY")
-      VALUE_ANY("ANY"),
-      ;
-
-      private String value;
-
-      private EnumOperator(String value) {
         this.value = value;
       }
 
